@@ -96,6 +96,11 @@ jobs:
           node-version: 18.x
           cache: pnpm
 
+      cache:
+        key: ${CI_COMMIT_REF_SLUG}
+        paths:
+          - node_modules/
+          - .next/cache/
 
       - name: Restore cache
         uses: actions/cache@v3
