@@ -109,7 +109,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile --no-optional
+        run: pnpm install --no-frozen-lockfile
       - name: Build with Next.js
         run: pnpm run build
 
