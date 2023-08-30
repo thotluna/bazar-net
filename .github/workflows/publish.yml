@@ -10,25 +10,25 @@ env:
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
 jobs:
-  job1:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+  # job1:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout repo
+  #       uses: actions/checkout@v3
 
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18.x
+  #     - name: Setup Node
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 18.x
 
-      - uses: pnpm/action-setup@v2
-        name: Install pnpm
-        with:
-          version: 7.x
-          run_install: false
+  #     - uses: pnpm/action-setup@v2
+  #       name: Install pnpm
+  #       with:
+  #         version: 7.x
+  #         run_install: false
 
-      - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile --no-optional
+  #     - name: Install dependencies
+  #       run: pnpm install --no-frozen-lockfile --no-optional
 
       # - name: Install swc
       #   run: pnpm install -D vite-plugin-svgr
@@ -42,11 +42,11 @@ jobs:
       # - name: Run unit test
       #   run: pnpm run test
 
-  job2:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+  # job2:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout repo
+  #       uses: actions/checkout@v3
 
       # - name: Setup Node
       #   uses: actions/setup-node@v3
@@ -76,8 +76,9 @@ jobs:
       #     path: playwright-report/
       #     retention-days: 30
 
-  job3:
-    needs: [job1, job2]
+  # job3:
+  #   needs: [job1, job2]
+  publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
