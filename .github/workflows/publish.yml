@@ -111,11 +111,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
-      - name: App up
-        run: pnpm dev
-
       - name: Unit Test run
-        run: pnpm test.ci
+        run: pnpm dev & pnpm test.ci
 
       - name: Build with Next.js
         run: pnpm run build
