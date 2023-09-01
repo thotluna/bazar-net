@@ -111,8 +111,13 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
+      - name: Run Api
+        id: api
+        run: pnpm dev
+
       - name: Unit Test run
-        run: pnpm dev & pnpm test.ci
+        run: pnpm test.ci
+        if: steps.api.outcome == 'success'
 
       - name: Build with Next.js
         run: pnpm run build
