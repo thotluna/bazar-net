@@ -2,24 +2,7 @@
  * @jest-environment node
  */
 
-import { Product } from '@/products/domain/product'
-
-async function readableStreamToString(readableStream: ReadableStream) {
-  const reader = readableStream.getReader()
-  let result = ''
-  let done = false
-
-  while (!done) {
-    const { value, done: readDone } = await reader.read()
-    if (readDone) {
-      done = true
-    } else {
-      result += new TextDecoder().decode(value)
-    }
-  }
-
-  return result
-}
+import { ResultProduct } from '@/modules/products/domain/result-products'
 
 describe('Api', () => {
   describe('GetAllProducts', () => {
@@ -29,11 +12,35 @@ describe('Api', () => {
       expect(res.status).toBe(200)
     })
     it('Should return ProductsDto[] ', async () => {
-      const list: Product[] = await fetch('http://localhost:3000/api/products').then((res) => res.json())
+      const result: ResultProduct = await fetch('http://localhost:3000/api/products').then((res) => res.json())
 
-      expect(list.length).toBeGreaterThan(0)
-      expect(list[0].title).toBeTruthy()
-      expect(list[0].linked).toBe(false)
+      const { products } = result
+
+      expect(result.total).toBeGreaterThan(0)
+      expect(products[0].title).toEqual('iPhone 9')
+      expect(products[0].liked).toBe(false)
+    })
+  })
+  describe('GetAllProduct with query', () => {
+    it('should return list filtered where query', async () => {
+      const query = 'Samsung'
+      const result: ResultProduct = await fetch(`http://localhost:3000/api/products?q=${query}`).then((res) =>
+        res.json()
+      )
+
+      const { products } = result
+
+      expect(result.total).toBeGreaterThan(0)
+      expect(products[0].title).toEqual('Samsung Universe 9')
+      expect(products[0].liked).toBe(false)
+    })
+    it('should return empty list', async () => {
+      const query = 'aadsdas adsdasdas dfsdasdad '
+      const result: ResultProduct = await fetch(`http://localhost:3000/api/products?q=${query}`).then((res) =>
+        res.json()
+      )
+
+      expect(result.total).toEqual(0)
     })
   })
 })
