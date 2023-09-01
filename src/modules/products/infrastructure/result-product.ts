@@ -1,4 +1,4 @@
-export type ProductDto = {
+export type ProductExternalDto = {
   id: number
   title: string
   description: string
@@ -12,8 +12,8 @@ export type ProductDto = {
   images: string[]
 }
 
-export type ResultProduct = {
-  products: ProductDto[]
+export type ResultexternalProduct = {
+  products: ProductExternalDto[]
   total: number
   skip: number
   limit: number

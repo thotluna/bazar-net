@@ -5,5 +5,5 @@ export interface ProductCard extends ProductBase {
   rating: number
   price: number
   discountPercentage: number
-  linked: boolean
+  liked: boolean
 }
