@@ -4,7 +4,7 @@ import { ProductRepository } from '@/modules/products/domain/product-repository'
 import { DummyJsonProductRepository } from '@/modules/products/infrastructure/dummy-json-product-repository'
 import { NextResponse } from 'next/server'
 
-export async function GET(request: Request, context: { params }) {
+export async function GET(request: Request, context: { params: { id: number } }) {
   const id = context.params.id
 
   const repository: ProductRepository = DummyJsonProductRepository()
