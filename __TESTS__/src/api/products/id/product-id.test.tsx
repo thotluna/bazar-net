@@ -4,7 +4,7 @@
 import { Product } from '@/modules/products/domain/product'
 
 describe('items/id', () => {
-  const baseUrl = 'http://localhost:3000/api/items/'
+  const baseUrl = 'http://localhost:3000/api/items'
 
   it('should return status 200', async () => {
     const id = 1
