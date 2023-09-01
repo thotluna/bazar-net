@@ -6,13 +6,6 @@ import { Product } from '@/modules/products/domain/product'
 describe('items/id', () => {
   const baseUrl = 'http://localhost:3000/api/items'
 
-  it('should return status 200', async () => {
-    const id = 1
-    const res = await fetch(`${baseUrl}/${id}`)
-
-    expect(res.status).toBe(200)
-  })
-
   it('should return one item', async () => {
     const id = 1
     const expected = {
@@ -35,8 +28,11 @@ describe('items/id', () => {
         'https://i.dummyjson.com/data/products/1/thumbnail.jpg'
       ]
     } satisfies Product
-    const product = await fetch(`${baseUrl}/${id}`).then((body) => body.json())
 
+    const res = await fetch(`${baseUrl}/${id}`)
+    const product = await res.json()
+
+    expect(res.status).toBe(200)
     expect(product).toEqual(expected)
   })
 
