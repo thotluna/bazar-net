@@ -110,17 +110,15 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
+        
+      - name: Build application
+        run: pnpm build
 
-      - name: Run Api
-        id: api
-        run: pnpm dev
+      - name: Start application
+        run: pnpm start
 
-      - name: Unit Test run
-        run: pnpm test.ci
-        if: steps.api.outcome == 'success'
-
-      - name: Build with Next.js
-        run: pnpm run build
+      - name: Run tests
+        run: pnpm test
 
       # - run: pnpm install
       # - run: pnpm vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
