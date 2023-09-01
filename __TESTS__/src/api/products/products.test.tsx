@@ -5,14 +5,15 @@
 import { ResultProduct } from '@/modules/products/domain/result-products'
 
 describe('Api', () => {
+  const baseUrl = 'http://localhost:3000/api/items'
   describe('GetAllProducts', () => {
     it('Should return status 200 ', async () => {
-      const res = await fetch('http://localhost:3000/api/products')
+      const res = await fetch(baseUrl)
 
       expect(res.status).toBe(200)
     })
     it('Should return ProductsDto[] ', async () => {
-      const result: ResultProduct = await fetch('http://localhost:3000/api/products').then((res) => res.json())
+      const result: ResultProduct = await fetch(baseUrl).then((res) => res.json())
 
       const { products } = result
 
@@ -24,7 +25,7 @@ describe('Api', () => {
   describe('GetAllProduct with query', () => {
     it('should return list filtered where query', async () => {
       const query = 'Samsung'
-      const result: ResultProduct = await fetch(`http://localhost:3000/api/products?q=${query}`).then((res) =>
+      const result: ResultProduct = await fetch(`${baseUrl}?q=${query}`).then((res) =>
         res.json()
       )
 
@@ -36,7 +37,7 @@ describe('Api', () => {
     })
     it('should return empty list', async () => {
       const query = 'aadsdas adsdasdas dfsdasdad '
-      const result: ResultProduct = await fetch(`http://localhost:3000/api/products?q=${query}`).then((res) =>
+      const result: ResultProduct = await fetch(`${baseUrl}?q=${query}`).then((res) =>
         res.json()
       )
 
