@@ -25,9 +25,7 @@ describe('Api', () => {
   describe('GetAllProduct with query', () => {
     it('should return list filtered where query', async () => {
       const query = 'Samsung'
-      const result: ResultProduct = await fetch(`${baseUrl}?q=${query}`).then((res) =>
-        res.json()
-      )
+      const result: ResultProduct = await fetch(`${baseUrl}?q=${query}`).then((res) => res.json())
 
       const { products } = result
 
@@ -37,9 +35,7 @@ describe('Api', () => {
     })
     it('should return empty list', async () => {
       const query = 'aadsdas adsdasdas dfsdasdad '
-      const result: ResultProduct = await fetch(`${baseUrl}?q=${query}`).then((res) =>
-        res.json()
-      )
+      const result: ResultProduct = await fetch(`${baseUrl}?q=${query}`).then((res) => res.json())
 
       expect(result.total).toEqual(0)
     })
