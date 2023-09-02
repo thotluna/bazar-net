@@ -115,7 +115,7 @@ jobs:
         run: pnpm build
 
       - name: Run tests
-        run: pnpm start & pnpm test
+        run: pnpm start & pnpm test a
 
       # - run: pnpm install
       # - run: pnpm vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
