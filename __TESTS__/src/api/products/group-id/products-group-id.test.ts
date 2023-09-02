@@ -51,7 +51,26 @@ describe('Api Group Id', () => {
 
   it('should return null for each id fail ', async () => {
     const products = await fetch(`${baseUrl}?ids=asdasd&ids=1232132&ids=`).then((res) => res.json())
-    const expected = [null, null, null]
+    const expected = [
+      {
+        error: {
+          message: 'id should be number',
+          name: 'ValidationError'
+        }
+      },
+      {
+        error: {
+          message: 'id = 1232132 does not exist',
+          name: 'ValidationError'
+        }
+      },
+      {
+        error: {
+          message: 'id = 0 does not exist',
+          name: 'ValidationError'
+        }
+      }
+    ]
     expect(products).toEqual(expected)
   })
 })

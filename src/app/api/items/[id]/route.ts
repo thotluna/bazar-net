@@ -17,8 +17,6 @@ export async function GET(request: Request, context: { params: { id: number | st
     const products = ids ? await GetItemsGroup(repository, ids) : await GetItem(repository, id!)
     return NextResponse.json(products)
   } catch (error) {
-    return new Response(`message: ${(error as Error).message}`, { status: 404 })
+    return new Response(`error: ${(error as Error).message}`, { status: 404 })
   }
-
-  return NextResponse.json({ ids, id })
 }

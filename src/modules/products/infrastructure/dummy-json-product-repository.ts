@@ -1,8 +1,11 @@
+import { ErrorMessage } from '@/modules/core/error-message'
 import { ValidationError } from '@/modules/core/error-validation'
 import { Product } from '../domain/product'
 import { ProductRepository } from '../domain/product-repository'
 import { ResultProduct } from '../domain/result-products'
 import { ResultexternalProduct } from './result-product'
+
+const URL_BASE_API = 'https://dummyjson.com/products'
 
 export function DummyJsonProductRepository(): ProductRepository {
   return {
@@ -13,7 +16,7 @@ export function DummyJsonProductRepository(): ProductRepository {
 }
 
 const getAll = async (query?: string | null): Promise<ResultProduct> => {
-  const url = query ? `https://dummyjson.com/products/search?q=${query}` : 'https://dummyjson.com/products'
+  const url = query ? `${URL_BASE_API}/search?q=${query}` : URL_BASE_API
 
   return fetch(url)
     .then((resultRaw) => resultRaw.json())
@@ -31,8 +34,10 @@ const getAll = async (query?: string | null): Promise<ResultProduct> => {
     })
 }
 
-const get = async (id: number): Promise<Product> => {
-  return fetch(`https://dummyjson.com/products/${id}`)
+const get = async (id: number): Promise<Product | ErrorMessage> => {
+  if (isNaN(Number(id))) throw new ValidationError(`id should be number`)
+
+  return fetch(`${URL_BASE_API}/${id}`)
     .then((resultRaw) => resultRaw.json())
     .then((result) => {
       if (result.message) throw new ValidationError(`id = ${id} does not exist`)
@@ -42,8 +47,10 @@ const get = async (id: number): Promise<Product> => {
     })
 }
 
-const getList = async (ids: number[]): Promise<Product[]> => {
+const getList = async (ids: number[]): Promise<(Product | ErrorMessage)[]> => {
   const promises = ids.map((id) => get(id))
 
-  return await Promise.allSettled([...promises]).then((result) => result.map((res) => res.value))
+  return Promise.allSettled([...promises]).then((result) =>
+    result.map((res) => (res.status === 'fulfilled' ? res.value : { error: res.reason as string }))
+  )
 }
