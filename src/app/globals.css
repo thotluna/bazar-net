@@ -6,6 +6,37 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+
+  --color-yellow: #eab308;
+  --color-black: #171717;
+  --color-gray-dark: #737373;
+  --color-gray-medium: #d9d9d9;
+  --color-gray-light: #f5f5f5;
+  --color-white: #ffffff;
+
+  --color-bg: var(--color-gray-light);
+
+  --color-topbar-text: var(--color-yellow);
+
+  --color-border: var(--color-yellow);
+  --color-serch-button-bg: var(--color-yellow);
+  --color-search-input-bg: var(--color-gray-medium);
+  --color-search-input-line: var(--color-yellow);
+  --color-search-input-text: var(--color-gray-dark);
+  --color-search-label-text: var(--color-black);
+
+  --color-card-title-test: var(--color-gray-dark);
+  --color-price-text: var(--color-black);
+  --color-liked-text: var(--color-yellow);
+  --color-no-liked-text: var(var(--color-gray-dark));
+  --color-rating-on-text: var(--color-yellow);
+  --color-rating-off-text: var(--color-gray-dark);
+
+  --color-badge-bg: var(--color-yellow);
+  --color-badget-text: var(--color-black);
+
+  --color-bar-text: var(var(--color-gray-medium));
+  --color-bar-bg: var(--color-black);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,6 +48,6 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  color: var(--color-black);
+  background: var(--color-gray-light);
 }
