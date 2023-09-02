@@ -4,4 +4,5 @@ import { ResultProduct } from './result-products'
 export interface ProductRepository {
   getAll: (query?: string | null) => Promise<ResultProduct>
   get: (id: number) => Promise<Product>
+  getList: (ids: number[]) => Promise<Product[]>
 }

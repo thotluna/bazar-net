@@ -7,7 +7,8 @@ import { ResultexternalProduct } from './result-product'
 export function DummyJsonProductRepository(): ProductRepository {
   return {
     getAll: (query?: string | null) => getAll(query),
-    get: (id: number) => get(id)
+    get: (id: number) => get(id),
+    getList: (ids: number[]) => getList(ids)
   }
 }
 
@@ -35,7 +36,14 @@ const get = async (id: number): Promise<Product> => {
     .then((resultRaw) => resultRaw.json())
     .then((result) => {
       if (result.message) throw new ValidationError(`id = ${id} does not exist`)
+      const product: Product = { ...result, liked: false }
 
-      return { ...result, liked: false }
+      return product
     })
+}
+
+const getList = async (ids: number[]): Promise<Product[]> => {
+  const promises = ids.map((id) => get(id))
+
+  return await Promise.allSettled([...promises]).then((result) => result.map((res) => res.value))
 }
