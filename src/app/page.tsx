@@ -1,4 +1,5 @@
 import { Header } from '@/components'
+import { Badge } from '@/components/badge'
 
 export default function Home() {
   return (
@@ -7,7 +8,9 @@ export default function Home() {
       <section className="flex-1">
         <h3>Hello</h3>
       </section>
-      <footer className="sticky bottom-0 bg-[var(--color-bar-bg)] px-4 h-16"></footer>
+      <footer className="sticky bottom-0 bg-[var(--color-bar-bg)] px-4 h-16">
+        <Badge amount={11} />
+      </footer>
     </main>
   )
 }
