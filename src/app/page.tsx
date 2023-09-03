@@ -1,5 +1,5 @@
 import { Header } from '@/components'
-import { Footer } from '@/components/footer'
+import { BottonBar } from '@/components/botton-bar'
 
 export default function Home() {
   return (
@@ -8,7 +8,7 @@ export default function Home() {
       <section className="flex-1">
         <h3>Hello</h3>
       </section>
-      <Footer />
+      <BottonBar />
     </main>
   )
 }

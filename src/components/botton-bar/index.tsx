@@ -5,7 +5,7 @@ import { LikedButton } from '../Liked-button'
 import { ProfileButton } from '../profile-button'
 import { ShoppinCarButton } from '../shopping-car-button'
 
-export function Footer() {
+export function BottonBar() {
   const path = usePathname()
   const isHome = path !== '/'
 
