@@ -2,7 +2,7 @@
 import { ArrowBack } from '@/components/icons'
 import { usePathname, useRouter } from 'next/navigation'
 
-export function Header() {
+export function TopBar() {
   const pathname = usePathname()
   const isHome = pathname === '/'
 

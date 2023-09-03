@@ -1,11 +1,11 @@
 import { render, screen } from '@testing-library/react'
 import { usePathname, useRouter } from 'next/navigation'
-import { Header } from '../../../../src/components/header'
+import { TopBar } from '../../../../src/components/top-bar'
 
 jest.mock('next/navigation')
 const mockRouterReplace = jest.fn()
 
-describe('Header Components', () => {
+describe('TopBar Components', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })
@@ -13,12 +13,12 @@ describe('Header Components', () => {
     ;(useRouter as jest.Mock).mockReturnValue({
       back: mockRouterReplace
     })
-    render(<Header />)
+    render(<TopBar />)
     expect(await screen.findByText(/BAZAR-NET/i)).toBeInTheDocument()
   })
   it('should render when is in base route', async () => {
     ;(usePathname as jest.Mock).mockReturnValue('/')
-    render(<Header />)
+    render(<TopBar />)
     const button = screen.queryByRole('button', { name: /return/i })
     expect(button).not.toBeInTheDocument()
 
@@ -29,7 +29,7 @@ describe('Header Components', () => {
   })
   it('should render when is not in base route', async () => {
     ;(usePathname as jest.Mock).mockReturnValue('/api')
-    render(<Header />)
+    render(<TopBar />)
     const button = screen.queryByRole('button', { name: /return/i })
     expect(button).toBeInTheDocument()
 
