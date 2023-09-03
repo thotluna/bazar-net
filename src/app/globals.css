@@ -35,7 +35,7 @@
   --color-badge-bg: var(--color-yellow);
   --color-badget-text: var(--color-black);
 
-  --color-bar-text: var(var(--color-gray-medium));
+  --color-bar-text: var(--color-gray-medium);
   --color-bar-bg: var(--color-black);
 }
 
