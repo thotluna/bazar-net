@@ -29,8 +29,7 @@
   --color-price-text: var(--color-black);
   --color-liked-text: var(--color-yellow);
   --color-no-liked-text: var(var(--color-gray-dark));
-  --color-rating-on-text: var(--color-yellow);
-  --color-rating-off-text: var(--color-gray-dark);
+  --color-rating-text: var(--color-yellow);
 
   --color-button-circle-bg: var(--color-gray-medium);
   --color-button-circle-text-active: var(--color-yellow);
