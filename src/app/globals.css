@@ -32,6 +32,12 @@
   --color-rating-on-text: var(--color-yellow);
   --color-rating-off-text: var(--color-gray-dark);
 
+  --color-button-circle-bg: var(--color-gray-medium);
+  --color-button-circle-text-active: var(--color-yellow);
+  --color-button-circle-text: var(--color-gray-dark);
+  --color-button-circle-border-active: var(--color-yellow);
+  --color-button-circle-border: var(--color-gray-dark);
+
   --color-badge-bg: var(--color-yellow);
   --color-badget-text: var(--color-black);
 
