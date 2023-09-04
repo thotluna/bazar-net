@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { ProductCard } from '@/modules/products/domain/product-card'
+import { ProductCard } from '@/modules/items/domain/product-card'
 import { LikeButton } from '../like-button'
 import { RaitingBar } from '../raiting-bar'
 

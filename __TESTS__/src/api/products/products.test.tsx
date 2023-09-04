@@ -2,7 +2,7 @@
  * @jest-environment node
  */
 
-import { ResultProduct } from '@/modules/products/domain/result-products'
+import { ResultProduct } from '@/modules/items/domain/result-products'
 
 describe('Api', () => {
   const baseUrl = 'http://localhost:3000/api/items'

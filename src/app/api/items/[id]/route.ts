@@ -1,8 +1,8 @@
 import { Error } from '@/modules/core/error'
-import { GetItem } from '@/modules/products/application/get-item'
-import { GetItemsGroup } from '@/modules/products/application/get-items-group'
-import { ProductRepository } from '@/modules/products/domain/product-repository'
-import { DummyJsonProductRepository } from '@/modules/products/infrastructure/dummy-json-product-repository'
+import { GetItem } from '@/modules/items/application/get-item'
+import { GetItemsGroup } from '@/modules/items/application/get-items-group'
+import { ProductRepository } from '@/modules/items/domain/product-repository'
+import { DummyJsonProductRepository } from '@/modules/items/infrastructure/dummy-json-product-repository'
 import { NextResponse } from 'next/server'
 
 export async function GET(request: Request, context: { params: { id: number | string } }) {
