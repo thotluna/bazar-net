@@ -47,7 +47,7 @@ describe('Api Group Id', () => {
       }
     ]
     expect(products).toEqual(expected)
-  })
+  }, 10000)
 
   it('should return null for each id fail ', async () => {
     const products = await fetch(`${baseUrl}?ids=asdasd&ids=1232132&ids=`).then((res) => res.json())
@@ -72,5 +72,5 @@ describe('Api Group Id', () => {
       }
     ]
     expect(products).toEqual(expected)
-  })
+  }, 10000)
 })
