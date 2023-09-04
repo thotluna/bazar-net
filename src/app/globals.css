@@ -21,9 +21,10 @@
   --color-border: var(--color-yellow);
   --color-serch-button-bg: var(--color-yellow);
   --color-search-input-bg: var(--color-gray-medium);
+  --color-search-input-border: var(--color-yellow);
   --color-search-input-line: var(--color-yellow);
-  --color-search-input-text: var(--color-gray-dark);
-  --color-search-label-text: var(--color-black);
+  --color-search-input-placeholder: var(--color-gray-dark);
+  --color-search-input-text: var(--color-black);
 
   --color-card-title-test: var(--color-gray-dark);
   --color-price-text: var(--color-black);
