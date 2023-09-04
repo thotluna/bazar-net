@@ -1,3 +1,4 @@
+import { BottonBar, TopBar } from '@/components'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
@@ -12,7 +13,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} w-screen h-screen container m-auto max-w-xs bg-slate-950`}>{children}</body>
+      <body className={`${inter.className} w-screen h-screen container m-auto max-w-xs bg-slate-950`}>
+        <main className="bg-[var(--color-bg)] min-h-full flex flex-col">
+          <TopBar />
+          {children}
+          <BottonBar />
+        </main>
+      </body>
     </html>
   )
 }
