@@ -13,7 +13,7 @@ export function TopBar() {
   return (
     <header
       data-testid="header"
-      className={`sticky top-0 bg-[var(--color-bar-bg)] px-4 flex items-center ${style} gap-2 `}
+      className={`sticky z-20 top-0 bg-[var(--color-bar-bg)] px-4 flex items-center ${style} gap-2 `}
     >
       {!isHome && (
         <button onClick={back} className="text-[var(--color-topbar-text)]">

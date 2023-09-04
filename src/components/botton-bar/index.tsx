@@ -12,7 +12,7 @@ export function BottonBar() {
   //TODO: Add hook from shoppingCar and productLiked
 
   return (
-    <footer className="sticky bottom-0 bg-[var(--color-bar-bg)] px-4 h-16 flex justify-between items-center">
+    <footer className="sticky z-20 bottom-0 bg-[var(--color-bar-bg)] px-4 h-16 flex justify-between items-center">
       <div className="flex-1 w-full h-full ">
         {!isHome && (
           <Link className="w-full h-full flex items-center justify-center text-[var(--color-bar-text)]" href="/">
