@@ -3,7 +3,7 @@ import { ReactNode } from 'react'
 
 interface Props {
   children: ReactNode
-  onClick: () => void
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void
   active?: boolean
 }
 export function ButtonCircle({ children, onClick, active = false }: Props) {
