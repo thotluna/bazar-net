@@ -7,7 +7,9 @@ import { ShoppinCarButton } from '../shopping-car-button'
 
 export function BottonBar() {
   const path = usePathname()
-  const isHome = path !== '/'
+  const isHome = path === '/'
+
+  //TODO: Add hook from shoppingCar and productLiked
 
   return (
     <footer className="sticky bottom-0 bg-[var(--color-bar-bg)] px-4 h-16 flex justify-between items-center">
@@ -19,8 +21,8 @@ export function BottonBar() {
         )}
       </div>
       <div className="flex items-center justify-between border-s border-[var(--color-bar-text)] gap-2">
-        <ShoppinCarButton href="#" productCount={10} />
-        <LikedButton href="#" productCount={5} />
+        <ShoppinCarButton href="#" productCount={0} />
+        <LikedButton href="#" productCount={0} />
         <ProfileButton href="#" />
       </div>
     </footer>
