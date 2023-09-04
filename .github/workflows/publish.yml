@@ -111,11 +111,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
-      - name: Build application
-        run: pnpm build
-
       - name: Run tests
-        run: pnpm start & pnpm test.ci a
+        run: pnpm dev & pnpm test.ci a
+
+      # - name: Build application
+      #   run: pnpm build
 
       # - run: pnpm install
       # - run: pnpm vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
