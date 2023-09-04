@@ -2,14 +2,14 @@
  * @jest-environment node
  */
 describe('Api Group Id', () => {
-  const baseUrl = 'http://localhost:3000/api/items/group-id'
+  const baseUrl = process.env.API_URL ?? 'http://localhost:3000/api'
   it('should return status 200', async () => {
-    const res = await fetch(`${baseUrl}?ids=5&ids=10`)
+    const res = await fetch(`${baseUrl}/items/group-id?ids=5&ids=10`)
     expect(res.status).toBe(200)
   })
 
   it('should return status 200', async () => {
-    const products = await fetch(`${baseUrl}?ids=1&ids=3`).then((res) => res.json())
+    const products = await fetch(`${baseUrl}/items/group-id?ids=1&ids=3`).then((res) => res.json())
     const expected = [
       {
         id: 1,
@@ -49,8 +49,8 @@ describe('Api Group Id', () => {
     expect(products).toEqual(expected)
   }, 10000)
 
-  it('should return null for each id fail ', async () => {
-    const products = await fetch(`${baseUrl}?ids=asdasd&ids=1232132&ids=`).then((res) => res.json())
+  it('should return error for each id fail ', async () => {
+    const products = await fetch(`${baseUrl}/items/group-id?ids=asdasd&ids=1232132&ids=`).then((res) => res.json())
     const expected = [
       {
         error: {

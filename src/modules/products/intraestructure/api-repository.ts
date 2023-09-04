@@ -1,7 +1,7 @@
 import { ResultProduct } from '@/modules/items/domain/result-products'
 import { ProductRepository } from '../domain'
 
-const URL_BASE = 'https://localhost:3000/api/items'
+const API_URL_BASE = process.env.API_URL
 
 export const ApiProductRepository: ProductRepository = {
   getAllProducts: (query?: string) => getAllProducts(query)
@@ -9,6 +9,8 @@ export const ApiProductRepository: ProductRepository = {
 
 const getAllProducts = (query?: string) => {
   const q = query ? `?q=${query}` : ''
-  const resultProduct = fetch(`${URL_BASE}${q}`).then((data) => data.json())
+  const resultProduct = fetch(`${API_URL_BASE}/items${q}`).then((data) => data.json())
+  // const request = new Request(`${API_URL_BASE}/items${q}`)
+  // const resultProduct = GET(request).then((res) => res.json())
   return resultProduct satisfies Promise<ResultProduct>
 }
