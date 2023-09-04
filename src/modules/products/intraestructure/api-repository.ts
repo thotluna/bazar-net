@@ -1,7 +1,7 @@
 import { ResultProduct } from '@/modules/items/domain/result-products'
 import { ProductRepository } from '../domain'
 
-const URL_BASE = 'http://localhost:3000/api/items'
+const URL_BASE = 'https://localhost:3000/api/items'
 
 export const ApiProductRepository: ProductRepository = {
   getAllProducts: (query?: string) => getAllProducts(query)
