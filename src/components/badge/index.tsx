@@ -1,9 +1,8 @@
 interface Props {
   amount: number
-  color: string
 }
 
-export function Badge({ amount, color = 'currentcolor' }: Props) {
+export function Badge({ amount }: Props) {
   if (!amount || amount <= 0) return
   const num = amount >= 10 ? '+9' : amount
 

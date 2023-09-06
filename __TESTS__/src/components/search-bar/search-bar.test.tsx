@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation'
 
 jest.mock('next/navigation')
 const mockRouterPush = jest.fn()
-// const spy = jest.spyOn(useRouter, 'push')
 
 describe.only('SearchBar component', () => {
   beforeEach(() => {

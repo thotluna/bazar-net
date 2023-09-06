@@ -14,7 +14,6 @@ export function LikeButton({ idProduct, active = false }: Props) {
   const onClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
     event.stopPropagation()
-    console.log(idProduct)
   }
 
   return (
