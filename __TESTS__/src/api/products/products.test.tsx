@@ -2,42 +2,67 @@
  * @jest-environment node
  */
 
-import { ResultProduct } from '@/modules/items/domain/result-products'
+import { GET } from '@/app/api/items/route'
+import { DummyJsonProductRepository } from '@/modules/items/infrastructure/dummy-json-product-repository'
+import { ResultProductMother } from '../../modules/products/infrastructure/result-products-mother'
+
+jest.mock('../../../../src/modules/items/infrastructure/dummy-json-product-repository.ts')
 
 describe('Api', () => {
   const baseUrl = 'http://localhost:3000/api/items'
   describe('GetAllProducts', () => {
     it('Should return status 200 ', async () => {
-      const res = await fetch(baseUrl)
+      const getAll = jest.fn().mockResolvedValue(ResultProductMother.create(5))
+      ;(DummyJsonProductRepository as jest.Mock).mockReturnValue({
+        getAll: getAll
+      })
+
+      const require = new Request(baseUrl)
+      const res = await GET(require)
 
       expect(res.status).toBe(200)
+      expect(getAll).toHaveBeenCalled()
     })
-    it('Should return ProductsDto[] ', async () => {
-      const result: ResultProduct = await fetch(baseUrl).then((res) => res.json())
+    it('Should return result products ', async () => {
+      const resultFaker = ResultProductMother.create(5)
+      const getAll = jest.fn().mockResolvedValue(resultFaker)
+      ;(DummyJsonProductRepository as jest.Mock).mockReturnValue({
+        getAll: getAll
+      })
 
-      const { products } = result
+      const require = new Request(baseUrl)
+      const res = await GET(require).then((body) => body.json())
+      const resultProduct = res
 
-      expect(result.total).toBeGreaterThan(0)
-      expect(products[0].title).toEqual('iPhone 9')
-      expect(products[0].liked).toBe(false)
+      expect(resultProduct).toEqual(resultFaker)
     })
   })
   describe('GetAllProduct with query', () => {
-    it('should return list filtered where query', async () => {
-      const query = 'Samsung'
-      const result: ResultProduct = await fetch(`${baseUrl}?q=${query}`).then((res) => res.json())
+    it('should have been called with query distint null', async () => {
+      const resultFaker = ResultProductMother.create(5)
+      const getAll = jest.fn().mockResolvedValue(resultFaker)
+      ;(DummyJsonProductRepository as jest.Mock).mockReturnValue({
+        getAll: (query?: string | null) => getAll(query)
+      })
+      const query = 'asdasd'
+      const require = new Request(`${baseUrl}/search?q=${query}`)
+      const res = await GET(require)
 
-      const { products } = result
-
-      expect(result.total).toBeGreaterThan(0)
-      expect(products[0].title).toEqual('Samsung Universe 9')
-      expect(products[0].liked).toBe(false)
+      expect(res.status).toBe(200)
+      expect(getAll).toHaveBeenCalledWith(query)
     })
-    it('should return empty list', async () => {
-      const query = 'aadsdas adsdasdas dfsdasdad '
-      const result: ResultProduct = await fetch(`${baseUrl}?q=${query}`).then((res) => res.json())
+    it('should have been called with query equalt null', async () => {
+      const resultFaker = ResultProductMother.create(0)
+      const getAll = jest.fn().mockResolvedValue(resultFaker)
+      ;(DummyJsonProductRepository as jest.Mock).mockReturnValue({
+        getAll: (query?: string | null) => getAll(query)
+      })
+      const query = 'asdasd'
+      const require = new Request(`${baseUrl}`)
+      const res = await GET(require)
 
-      expect(result.total).toEqual(0)
+      expect(res.status).toBe(200)
+      expect(getAll).toHaveBeenCalledWith(null)
     })
   })
 })
