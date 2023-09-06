@@ -1,52 +1,63 @@
 /**
  * @jest-environment node
  */
-import { Product } from '@/modules/items/domain/product'
+import { GET } from '@/app/api/items/[id]/route'
+import { ValidationError } from '@/modules/core/error-validation'
+import { DummyJsonProductRepository } from '@/modules/items/infrastructure/dummy-json-product-repository'
+import { productMother } from '../../../modules/products/infrastructure/result-products-mother'
+
+jest.mock('../../../../../src/modules/items/infrastructure/dummy-json-product-repository.ts')
 
 describe('items/id', () => {
   const baseUrl = 'http://localhost:3000/api/items'
 
   it('should return one item', async () => {
     const id = 1
-    const expected = {
-      id: 1,
-      title: 'iPhone 9',
-      description: 'An apple mobile which is nothing like apple',
-      price: 549,
-      discountPercentage: 12.96,
-      rating: 4.69,
-      stock: 94,
-      brand: 'Apple',
-      category: 'smartphones',
-      liked: false,
-      thumbnail: 'https://i.dummyjson.com/data/products/1/thumbnail.jpg',
-      images: [
-        'https://i.dummyjson.com/data/products/1/1.jpg',
-        'https://i.dummyjson.com/data/products/1/2.jpg',
-        'https://i.dummyjson.com/data/products/1/3.jpg',
-        'https://i.dummyjson.com/data/products/1/4.jpg',
-        'https://i.dummyjson.com/data/products/1/thumbnail.jpg'
-      ]
-    } satisfies Product
+    const productFaker = productMother.create({ id })
+    const get = jest.fn().mockResolvedValue(productFaker)
+    ;(DummyJsonProductRepository as jest.Mock).mockReturnValue({
+      get: (id: number) => get(id)
+    })
 
-    const res = await fetch(`${baseUrl}/${id}`)
+    const require = new Request(`${baseUrl}/${id}`)
+    const res = await GET(require)
     const product = await res.json()
 
     expect(res.status).toBe(200)
-    expect(product).toEqual(expected)
+    expect(product).toEqual(productFaker)
+    expect(get).toHaveBeenCalledWith(id)
   })
 
   it('should return status 404', async () => {
     const id = 'asdasd'
-    const res = await fetch(`${baseUrl}/${id}`)
+
+    const get = jest.fn()
+    ;(DummyJsonProductRepository as jest.Mock).mockReturnValue({
+      get: (id: number) => get(id)
+    })
+
+    const require = new Request(`${baseUrl}/${id}`)
+    const res = await GET(require)
+    const errorMessage = await res.json()
 
     expect(res.status).toBe(404)
+    expect(errorMessage.error).toEqual('id should be number')
   })
 
   it('should return status 404', async () => {
     const id = 124578
-    const res = await fetch(`${baseUrl}/${id}`)
+
+    const get = jest.fn().mockRejectedValue(new ValidationError(`id = ${id} does not exist`))
+    ;(DummyJsonProductRepository as jest.Mock).mockReturnValue({
+      get: (id: number) => get(id)
+    })
+
+    const require = new Request(`${baseUrl}/${id}`)
+    const res = await GET(require)
+    const errorMesage = await res.json()
 
     expect(res.status).toBe(404)
+    expect(errorMesage.error).toEqual(`id = ${id} does not exist`)
+    expect(get).toHaveBeenCalledTimes(1)
   })
 })
