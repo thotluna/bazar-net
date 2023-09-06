@@ -37,7 +37,7 @@ jobs:
         run: pnpm run fmt.check
 
       - name: Run unit test
-        run: pnpm dev & pnpm run test.ci a
+        run: pnpm run test.ci a
   # deploy:
   #   needs: [unit_test]
   #   runs-on: ubuntu-latest
