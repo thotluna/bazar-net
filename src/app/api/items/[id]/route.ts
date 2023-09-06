@@ -10,7 +10,8 @@ export async function GET(request: Request) {
   const allIds = params.getAll('ids')
   const idOrIDs = new URL(request.url).pathname.split('/').at(-1)
 
-  const ids = idOrIDs === 'group-id' ? allIds.map((id) => Number(id)) : undefined
+  const ids = idOrIDs === 'group-id' ? allIds : undefined
+
   const id = idOrIDs === 'group-id' ? undefined : Number(idOrIDs)
 
   const repository: ProductRepository = DummyJsonProductRepository()
@@ -19,7 +20,9 @@ export async function GET(request: Request) {
     return NextResponse.json(products)
   } catch (error) {
     const messageError = { error: (error as Error).message }
+
     const res = JSON.stringify(messageError)
+
     return new Response(res, {
       status: 404,
       headers: {
