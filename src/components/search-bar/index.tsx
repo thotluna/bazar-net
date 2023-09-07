@@ -16,7 +16,7 @@ export function SearchBar() {
   }
 
   return (
-    <section className="">
+    <section className="w-full px-2 sm:px-0">
       <form
         className="w-full flex items-center justify-between gap-2"
         onSubmit={onSubmitHandler}
@@ -32,7 +32,7 @@ export function SearchBar() {
         />
 
         <button
-          className="w-12 h-12 bg-[var(--color-serch-button-bg)] rounded-full flex items-center justify-center border-2 border-[var(--color-search-button-border)]"
+          className="w-12 aspect-[1/1] bg-[var(--color-serch-button-bg)] rounded-full flex items-center justify-center border-2 border-[var(--color-search-button-border)] focus-visible:ring-4 focus-visible:ring-emerald-800"
           type="submit"
         >
           <SearchIcon />
