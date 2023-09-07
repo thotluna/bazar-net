@@ -9,6 +9,8 @@
     "lint": "next lint",
     "test": "jest --watch",
     "cypress": "cypress open",
+    "cypress.ci": "cypress run –headless",
+    "test.e2e.ci": "pnpm start & pnpm cypress.ci",
     "test.ci": "jest",
     "fmt": "prettier --write .",
     "fmt.check": "prettier --check .",
@@ -44,6 +46,7 @@
     "jest-environment-jsdom": "^29.6.4",
     "lint-staged": "^14.0.1",
     "prettier": "^3.0.3",
-    "prettier-plugin-organize-imports": "^3.2.3"
+    "prettier-plugin-organize-imports": "^3.2.3",
+    "start-server-and-test": "^2.0.0"
   }
 }

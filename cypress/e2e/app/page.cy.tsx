@@ -1,6 +1,6 @@
 describe('Page Home', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
   })
   describe('should have', () => {
     it('Page title', () => {
@@ -37,19 +37,19 @@ describe('Page Home', () => {
     it('to products found', () => {
       cy.get('input').type('searching-thing')
       cy.get('button[type="submit"]').click()
-      cy.url({ timeout: 10000 }).should('eq', 'http://localhost:3000/products?q=searching-thing')
+      cy.url({ timeout: 10000 }).should('include', '/products?q=searching-thing')
     })
     it('to products details', () => {
       cy.get('a article').first().click()
-      cy.url({ timeout: 10000 }).should('eq', 'http://localhost:3000/products/1')
+      cy.url({ timeout: 10000 }).should('include', '/products/1')
     })
     it('to Shopping card', () => {
       cy.get('a[href="/shopping-card"]').click()
-      cy.url({ timeout: 10000 }).should('eq', 'http://localhost:3000/shopping-card')
+      cy.url({ timeout: 10000 }).should('include', '/shopping-card')
     })
     it('to Shopping card', () => {
       cy.get('a[href="/products-liked"]').click()
-      cy.url({ timeout: 10000 }).should('eq', 'http://localhost:3000/products-liked')
+      cy.url({ timeout: 10000 }).should('include', '/products-liked')
     })
   })
 })
