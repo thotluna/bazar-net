@@ -8,10 +8,10 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest --watch",
-    "cypress": "cypress open",
+    "test.ci": "jest",
+    "test.e2e": "cypress open",
     "cypress.ci": "cypress run –headless",
     "test.e2e.ci": "pnpm start & pnpm cypress.ci",
-    "test.ci": "jest",
     "fmt": "prettier --write .",
     "fmt.check": "prettier --check .",
     "prepare": "husky install"

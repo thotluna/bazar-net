@@ -18,7 +18,7 @@ export function CardProduct({ product }: Props) {
             <img className="object-cover w-full h-full" src={product.thumbnail} alt={product.title} />
           </picture>
           <div className="absolute right-[-8px] bottom-[-1rem] z-10">
-            <LikeButton idProduct={product.id} active={product.liked} />
+            <LikeButton idProduct={product.id} label={`Like to ${product.title}`} />
           </div>
         </div>
         <RaitingBar value={product.rating} />

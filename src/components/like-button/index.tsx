@@ -8,9 +8,10 @@ import { ButtonCircle } from '../button-circle'
 interface Props {
   active?: boolean
   idProduct: number
+  label?: string
 }
 
-export const LikeButton = memo(function LikeButton({ idProduct, active = false }: Props) {
+export const LikeButton = memo(function LikeButton({ idProduct, label = 'Go to like product' }: Props) {
   const _ = useLikeStore((state) => state.likes)
   const toggleLike = useLikeStore((state) => state.toggle)
   const hasLiked = useLikeStore((state) => state.exist)
@@ -23,7 +24,7 @@ export const LikeButton = memo(function LikeButton({ idProduct, active = false }
 
   return (
     <ButtonCircle onClick={onClickHandler} active={hasLiked(idProduct)}>
-      <LikeIcon />
+      <LikeIcon label={label} />
     </ButtonCircle>
   )
 })
