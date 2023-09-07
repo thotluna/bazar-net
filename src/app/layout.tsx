@@ -1,4 +1,4 @@
-import { BottonBar, TopBar } from '@/components'
+import { BottomBar, TopBar } from '@/components'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
@@ -17,7 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main className="bg-[var(--color-bg)] min-h-full flex flex-col">
           <TopBar />
           {children}
-          <BottonBar />
+          <BottomBar />
         </main>
       </body>
     </html>

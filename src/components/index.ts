@@ -1,5 +1,5 @@
 export * from './badge'
-export * from './botton-bar'
+export * from './bottom-bar'
 export * from './card-product'
 export * from './icons'
 export * from './like-button'

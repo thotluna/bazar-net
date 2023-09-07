@@ -1,4 +1,4 @@
-import { BottonBar, TopBar } from '@/components'
+import { BottomBar, TopBar } from '@/components'
 
 export default function Products() {
   return (
@@ -7,7 +7,7 @@ export default function Products() {
       <section className="flex-1 p-2">
         <h1>Products</h1>
       </section>
-      <BottonBar />
+      <BottomBar />
     </main>
   )
 }
