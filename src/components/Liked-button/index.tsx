@@ -1,3 +1,4 @@
+'use client'
 import { LikeIcon } from '..'
 import { Badge } from '../badge'
 import { LinkButton } from '../link-button'

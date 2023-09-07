@@ -1,15 +1,16 @@
 'use client'
+import { useLikeStore } from '@/store/liked'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { LikedButton } from '../Liked-button'
 import { ProfileButton } from '../profile-button'
 import { ShoppingCarButton } from '../shopping-car-button'
 
-export function BottonBar() {
+export function BottomBar() {
   const path = usePathname()
   const isHome = path === '/'
-
-  //TODO: Add hook from shoppingCar and productLiked
+  const likes = useLikeStore((state) => state.likes)
+  //TODO: Add hook from shoppingCar
 
   return (
     <footer className="sticky z-20 bottom-0 bg-[var(--color-bar-bg)] px-4 h-16 flex justify-between items-center">
@@ -22,7 +23,7 @@ export function BottonBar() {
       </div>
       <div className="flex items-center justify-between border-s border-[var(--color-bar-text)] gap-2">
         <ShoppingCarButton href="/shopping-card" productCount={0} />
-        <LikedButton href="/products-liked" productCount={0} />
+        <LikedButton href="/products-liked" productCount={likes.length} />
         <ProfileButton href="#" />
       </div>
     </footer>
