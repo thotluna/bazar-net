@@ -21,8 +21,8 @@ export function BottonBar() {
         )}
       </div>
       <div className="flex items-center justify-between border-s border-[var(--color-bar-text)] gap-2">
-        <ShoppinCarButton href="#" productCount={0} />
-        <LikedButton href="#" productCount={0} />
+        <ShoppinCarButton href="/shopping-card" productCount={0} />
+        <LikedButton href="/products-liked" productCount={0} />
         <ProfileButton href="#" />
       </div>
     </footer>
