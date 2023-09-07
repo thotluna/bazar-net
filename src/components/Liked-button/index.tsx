@@ -10,7 +10,7 @@ interface Props {
 export function LikedButton({ href, productCount = 0 }: Props) {
   return (
     <LinkButton href={href}>
-      <Badge amount={productCount} color="var(--color-badge-text)" />
+      <Badge amount={productCount} />
       <LikeIcon />
     </LinkButton>
   )

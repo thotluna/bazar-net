@@ -7,10 +7,10 @@ interface Props {
   productCount?: number
 }
 
-export function ShoppinCarButton({ href, productCount = 0 }: Props) {
+export function ShoppingCarButton({ href, productCount = 0 }: Props) {
   return (
     <LinkButton href={href}>
-      <Badge amount={productCount} color="var(--color-badge-text)" />
+      <Badge amount={productCount} />
       <ShoppingCardIcon />
     </LinkButton>
   )

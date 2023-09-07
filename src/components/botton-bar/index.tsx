@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { LikedButton } from '../Liked-button'
 import { ProfileButton } from '../profile-button'
-import { ShoppinCarButton } from '../shopping-car-button'
+import { ShoppingCarButton } from '../shopping-car-button'
 
 export function BottonBar() {
   const path = usePathname()
@@ -21,7 +21,7 @@ export function BottonBar() {
         )}
       </div>
       <div className="flex items-center justify-between border-s border-[var(--color-bar-text)] gap-2">
-        <ShoppinCarButton href="/shopping-card" productCount={0} />
+        <ShoppingCarButton href="/shopping-card" productCount={0} />
         <LikedButton href="/products-liked" productCount={0} />
         <ProfileButton href="#" />
       </div>

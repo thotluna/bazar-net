@@ -24,7 +24,6 @@ export function SearchBar() {
       >
         <input
           className="h-12 border-2 border-[var(--color-search-input-border)] rounded-full bg-[var(--color-search-input-bg)] flex-1 px-2 placeholder:text-[var(--color-search-input-placeholder)] focus-visible:border-[var(--color-search-input-border)]"
-          id="search-input"
           type="text"
           aria-label="Search"
           placeholder="Search"

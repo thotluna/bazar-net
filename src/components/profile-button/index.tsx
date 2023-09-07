@@ -10,7 +10,7 @@ interface Props {
 export function ProfileButton({ href, productCount = 0 }: Props) {
   return (
     <LinkButton href={href}>
-      <Badge amount={productCount} color="var(--color-badge-text)" />
+      <Badge amount={productCount} />
       <UserIcon />
     </LinkButton>
   )
