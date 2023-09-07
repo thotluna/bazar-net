@@ -1,4 +1,4 @@
-export const LikeIcon = ({ label = 'Go to like product' }: { label: string }) => {
+export const LikeIcon = ({ label = 'Go to like product' }: { label?: string }) => {
   return (
     <svg width="24" height="21" fill="none" aria-label={label}>
       <path

@@ -51,7 +51,7 @@ describe('Page Home', () => {
       cy.get('a[href="/products-liked"]').click()
       cy.url({ timeout: 10000 }).should('include', '/products-liked')
     })
-    it.only('to like a product', () => {
+    it('to like a product', () => {
       //TODO: Fix should not navigate to detail product, should change color of button an increment count in BottomBar
       cy.get('button > svg[aria-label="Like to OPPOF19"]').parent().click()
       // cy.get('button > svg[aria-label="Like to iPhone 9"]').parent().should('have.class', 'border-[var(--color-button-circle-border-active)]')

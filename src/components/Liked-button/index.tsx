@@ -12,7 +12,7 @@ export function LikedButton({ href, productCount = 0 }: Props) {
   return (
     <LinkButton href={href}>
       <Badge amount={productCount} />
-      <LikeIcon />
+      <LikeIcon label="Go to Likes products list" />
     </LinkButton>
   )
 }
