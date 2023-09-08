@@ -14,6 +14,8 @@
     "test.e2e.ci": "pnpm start & pnpm cypress.ci",
     "fmt": "prettier --write .",
     "fmt.check": "prettier --check .",
+    "lint-staged": "pnpm exec lint-staged",
+    "check-fix": "pnpm fmt & pnpm lint",
     "prepare": "husky install"
   },
   "dependencies": {
