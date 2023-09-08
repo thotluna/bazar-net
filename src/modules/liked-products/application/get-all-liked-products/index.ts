@@ -5,7 +5,7 @@ import { LikedRepository } from '../../domain/liked-repository'
 export async function GetAllLikedProducts(
   likedRepository: LikedRepository,
   productRepository: ProductRepository
-): Promise<Product> {
+): Promise<Product[]> {
   const ids = likedRepository.getAll()
   return productRepository.getListByIds(ids)
 }

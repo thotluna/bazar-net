@@ -1,4 +1,3 @@
-'use client'
 import { LikedRepository } from '../domain/liked-repository'
 
 const KEY_LIKED_PRODUCTS = 'liked-products'
