@@ -12,7 +12,7 @@ interface StateLiked {
 const likedRepository: LikedRepository = LocalStorageLikedRepository()
 
 export const useLikeStore = create<StateLiked>((set, get) => ({
-  likes: GetIds(likedRepository),
+  likes: global.window !== undefined ? GetIds(likedRepository) : [],
   toggle: (id: number) =>
     set((state) => {
       const likes = state.likes.includes(id) ? state.likes.filter((pId) => pId !== id) : state.likes.concat(id)

@@ -23,7 +23,7 @@ export const LikeButton = memo(function LikeButton({ idProduct, label = 'Go to l
   }
 
   return (
-    <ButtonCircle onClick={onClickHandler} active={hasLiked(idProduct)}>
+    <ButtonCircle onClick={onClickHandler} active={hasLiked(idProduct) ?? false}>
       <LikeIcon label={label} />
     </ButtonCircle>
   )
