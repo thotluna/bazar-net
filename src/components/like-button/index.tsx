@@ -1,9 +1,10 @@
 /* eslint-disable no-console */
 'use client'
 import { useLikeStore } from '@/store/liked'
-import { memo } from 'react'
+import dynamic from 'next/dynamic'
 import { LikeIcon } from '..'
-import { ButtonCircle } from '../button-circle'
+
+const ButtonCircle = dynamic(() => import('../button-circle').then((mod) => mod.ButtonCircle), { ssr: false })
 
 interface Props {
   active?: boolean
@@ -11,7 +12,7 @@ interface Props {
   label?: string
 }
 
-export const LikeButton = memo(function LikeButton({ idProduct, label = 'Go to like product' }: Props) {
+export function LikeButton({ idProduct, label = 'Go to like product' }: Props) {
   const _ = useLikeStore((state) => state.likes)
   const toggleLike = useLikeStore((state) => state.toggle)
   const hasLiked = useLikeStore((state) => state.exist)
@@ -23,8 +24,8 @@ export const LikeButton = memo(function LikeButton({ idProduct, label = 'Go to l
   }
 
   return (
-    <ButtonCircle onClick={onClickHandler} active={hasLiked(idProduct) ?? false}>
+    <ButtonCircle onClick={onClickHandler} active={hasLiked(idProduct)}>
       <LikeIcon label={label} />
     </ButtonCircle>
   )
-})
+}
