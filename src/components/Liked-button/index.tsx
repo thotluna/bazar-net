@@ -1,17 +1,21 @@
 'use client'
+import { useLikeStore } from '@/store/liked'
+import dynamic from 'next/dynamic'
 import { LikeIcon } from '..'
-import { Badge } from '../badge'
 import { LinkButton } from '../link-button'
+
+const Badge = dynamic(() => import('../badge').then((mod) => mod.Badge), { ssr: false })
 
 interface Props {
   href: string
-  productCount?: number
 }
 
-export function LikedButton({ href, productCount = 0 }: Props) {
+export function LikedButton({ href }: Props) {
+  const likes = useLikeStore((state) => state.likes)
+
   return (
     <LinkButton href={href}>
-      <Badge amount={productCount} />
+      <Badge amount={likes.length ?? 0} />
       <LikeIcon label="Go to Likes products list" />
     </LinkButton>
   )
