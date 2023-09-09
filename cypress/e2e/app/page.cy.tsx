@@ -30,8 +30,8 @@ describe('Page Home', () => {
     })
 
     it('Card', () => {
-      cy.get('article')
-      cy.get('article button')
+      cy.get('[aria-label="Got to Detail of iPhone 9"]')
+      cy.get('[aria-label="Like to iPhone 9"]')
     })
   })
   describe('should navigate', () => {
@@ -68,7 +68,7 @@ describe('Page Home', () => {
         .then(() => {
           expect(localStorage.getItem(KEY_LIKED_PRODUCTS)).to.equal('[1]')
         })
-      cy.get('[href="/products-liked"] > div').should('have.text', '1')
+      cy.get('[href="/products-liked"] span').should('have.text', '1')
     })
   })
 })
