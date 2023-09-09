@@ -1,3 +1,4 @@
+import { KEY_LIKED_PRODUCTS } from '../../../src/modules/liked-products/infrastructure/local-storage-liked-repository'
 describe('Page Home', () => {
   beforeEach(() => {
     cy.visit('/')
@@ -56,6 +57,18 @@ describe('Page Home', () => {
       cy.get('button > svg[aria-label="Like to iPhone 9"]')
         .parent()
         .should('have.class', 'border-[var(--color-button-circle-border-active)]')
+    })
+  })
+  describe('LikedProducts', () => {
+    it.only('should save localStorage when click in LikeButton', () => {
+      cy.clearLocalStorage(KEY_LIKED_PRODUCTS)
+      cy.get('button > svg[aria-label="Like to iPhone 9"]')
+        .parent()
+        .click()
+        .then(() => {
+          expect(localStorage.getItem(KEY_LIKED_PRODUCTS)).to.equal('[1]')
+        })
+      cy.get('[href="/products-liked"] > div').should('have.text', '1')
     })
   })
 })

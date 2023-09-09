@@ -1,6 +1,6 @@
 import { LikedRepository } from '../domain/liked-repository'
 
-const KEY_LIKED_PRODUCTS = 'liked-products'
+export const KEY_LIKED_PRODUCTS = 'liked-products'
 
 export function LocalStorageLikedRepository(): LikedRepository {
   return {
