@@ -60,7 +60,7 @@ describe('Page Home', () => {
     })
   })
   describe('LikedProducts', () => {
-    it.only('should save localStorage when click in LikeButton', () => {
+    it('should save localStorage when click in LikeButton', () => {
       cy.clearLocalStorage(KEY_LIKED_PRODUCTS)
       cy.get('button > svg[aria-label="Like to iPhone 9"]')
         .parent()
