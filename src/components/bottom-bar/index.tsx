@@ -1,9 +1,11 @@
 'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { LikedButton } from '../Liked-button'
+// import { LikedButton } from '../Liked-button'
+import dynamic from 'next/dynamic'
 import { ProfileButton } from '../profile-button'
 import { ShoppingCarButton } from '../shopping-car-button'
+const LikedButton = dynamic(() => import('../Liked-button').then((mod) => mod.LikedButton), { ssr: false })
 
 export function BottomBar() {
   const path = usePathname()
@@ -20,7 +22,7 @@ export function BottomBar() {
       </div>
       <div className="flex items-center justify-between border-s border-[var(--color-bar-text)] gap-2">
         <ShoppingCarButton href="/shopping-card" productCount={0} />
-        <LikedButton href="/products-liked" />
+        <LikedButton />
         <ProfileButton href="#" />
       </div>
     </footer>

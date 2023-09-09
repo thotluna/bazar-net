@@ -6,6 +6,7 @@ const API_URL_BASE = process.env.API_URL
 
 export const ApiProductRepository: ProductRepository = {
   getAllProducts: (query?: string) => getAllProducts(query),
+
   getListByIds: (ids: number[]) => getListByIds(ids)
 }
 
@@ -16,7 +17,13 @@ const getAllProducts = (query?: string) => {
   return resultProduct satisfies Promise<ResultProduct>
 }
 
-const getListByIds = (ids: number[]) => {
-  const result: Product[] = []
-  return Promise.resolve(result)
+const getListByIds = (ids: number[]): Promise<Product[]> => {
+  let url = `${API_URL_BASE}/items/group-id?`
+  ids.forEach((id, index) => {
+    url += `ids=${id}`
+    if (index < ids.length - 1) {
+      url += '&'
+    }
+  })
+  return fetch(url).then((data) => data.json())
 }

@@ -6,15 +6,22 @@ import { LinkButton } from '../link-button'
 
 const Badge = dynamic(() => import('../badge').then((mod) => mod.Badge), { ssr: false })
 
-interface Props {
-  href: string
-}
+// interface Props {
+//   href: string
+// }
 
-export function LikedButton({ href }: Props) {
+export function LikedButton() {
   const likes = useLikeStore((state) => state.likes)
+  let url = '/products-liked?'
+  likes.forEach((id, index) => {
+    url += `id=${id}`
+    if (index < likes.length - 1) {
+      url += '&'
+    }
+  })
 
   return (
-    <LinkButton href={href}>
+    <LinkButton href={url}>
       <Badge amount={likes.length ?? 0} />
       <LikeIcon label="Go to Likes products list" />
     </LinkButton>
