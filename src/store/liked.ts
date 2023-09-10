@@ -7,6 +7,7 @@ interface StateLiked {
   likes: number[]
   toggle: (id: number) => void
   exist: (id: number) => boolean
+  deleteAll: () => void
 }
 
 const likedRepository: LikedRepository = LocalStorageLikedRepository()
@@ -19,5 +20,11 @@ export const useLikeStore = create<StateLiked>((set, get) => ({
       SaveIds(likedRepository, likes)
       return { likes }
     }),
-  exist: (id: number) => get().likes.includes(id)
+  exist: (id: number) => get().likes.includes(id),
+  deleteAll: () =>
+    set((state) => {
+      state.likes = []
+      SaveIds(likedRepository, [])
+      return state
+    })
 }))
