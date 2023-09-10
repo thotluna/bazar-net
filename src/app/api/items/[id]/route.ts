@@ -3,7 +3,6 @@ import { GetItem } from '@/modules/items/application/get-item'
 import { GetItemsGroup } from '@/modules/items/application/get-items-group'
 import { ProductRepository } from '@/modules/items/domain/product-repository'
 import { DummyJsonProductRepository } from '@/modules/items/infrastructure/dummy-json-product-repository'
-import { NextResponse } from 'next/server'
 
 export async function GET(request: Request) {
   const params = new URL(request.url).searchParams
@@ -17,7 +16,14 @@ export async function GET(request: Request) {
   const repository: ProductRepository = DummyJsonProductRepository()
   try {
     const products = ids ? await GetItemsGroup(repository, ids) : await GetItem(repository, id!)
-    return NextResponse.json(products)
+    return new Response(JSON.stringify(products), {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        'Content-Type': 'application/json'
+      }
+    })
   } catch (error) {
     const messageError = { error: (error as Error).message }
 
