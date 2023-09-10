@@ -2,7 +2,7 @@ import { Product } from '@/modules/items/domain/product'
 import { ResultProduct } from '@/modules/items/domain/result-products'
 import { ProductRepository } from '../domain'
 
-const API_URL_BASE = process.env.API_URL
+const API_URL_BASE = process.env.NEXT_PUBLIC_API_URL
 
 export const ApiProductRepository: ProductRepository = {
   getAllProducts: (query?: string) => getAllProducts(query),

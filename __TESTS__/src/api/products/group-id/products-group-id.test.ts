@@ -10,7 +10,7 @@ import { productMother } from '../../../modules/products/infrastructure/result-p
 jest.mock('../../../../../src/modules/items/infrastructure/dummy-json-product-repository.ts')
 
 describe('Api Group Id', () => {
-  const baseUrl = process.env.API_URL ?? 'http://localhost:3000/api'
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3000/api'
   it('should return status 200 and list of items', async () => {
     const ids = [1, 3]
     const productsFaker = productMother.createList(2)
