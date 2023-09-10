@@ -20,10 +20,10 @@ describe('Page Home', () => {
       cy.get('button[type="submit"]').children().should('have.attr', 'aria-label', 'submit')
     })
     it('Button Shopping car list', () => {
-      cy.get('a[href="/shopping-card"]')
+      cy.get('a[href="/shopping-car"]')
     })
     it('Button Liked list', () => {
-      cy.get('a[href="/products-liked"]')
+      cy.get('a [aria-label="Go to Likes products list"]')
     })
     it('Button profile', () => {
       cy.get('a').last().children().should('have.attr', 'aria-label', 'Go to profile')
@@ -44,12 +44,12 @@ describe('Page Home', () => {
       cy.get('a article').first().click()
       cy.url({ timeout: 10000 }).should('include', '/products/1')
     })
-    it('to Shopping card', () => {
-      cy.get('a[href="/shopping-card"]').click()
-      cy.url({ timeout: 10000 }).should('include', '/shopping-card')
+    it('to Shopping car', () => {
+      cy.get('a[href="/shopping-car"]').click()
+      cy.url({ timeout: 10000 }).should('include', '/shopping-car')
     })
-    it('to Shopping card', () => {
-      cy.get('a[href="/products-liked"]').click()
+    it('to Liked product', () => {
+      cy.get('a [aria-label="Go to Likes products list"]').click()
       cy.url({ timeout: 10000 }).should('include', '/products-liked')
     })
     it('to like a product', () => {
@@ -68,7 +68,7 @@ describe('Page Home', () => {
         .then(() => {
           expect(localStorage.getItem(KEY_LIKED_PRODUCTS)).to.equal('[1]')
         })
-      cy.get('[href="/products-liked"] span').should('have.text', '1')
+      cy.get('[data-cy="Liked-Badge"]').should('have.text', '1')
     })
   })
 })
