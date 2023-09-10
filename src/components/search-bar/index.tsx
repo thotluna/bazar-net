@@ -9,10 +9,7 @@ export function SearchBar() {
 
   const onSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    // const target = event.currentTarget
-    // const search = target[0] as HTMLInputElement
-
-    route.push(`/products?q=${search}`)
+    if (search.length > 0) route.push(`/products?q=${search}`)
   }
 
   return (
@@ -25,7 +22,7 @@ export function SearchBar() {
         <input
           className="h-12 border-2 border-[var(--color-search-input-border)] rounded-full bg-[var(--color-search-input-bg)] flex-1 px-2 placeholder:text-[var(--color-search-input-placeholder)] focus-visible:border-[var(--color-search-input-border)]"
           type="text"
-          aria-label="Search"
+          aria-label="Search input"
           placeholder="Search"
           value={search}
           onChange={(event) => setSearch(event.target.value)}
