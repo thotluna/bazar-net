@@ -29,7 +29,7 @@ export function SearchBar() {
         />
 
         <button
-          className="w-12 aspect-[1/1] bg-[var(--color-serch-button-bg)] rounded-full flex items-center justify-center border-2 border-[var(--color-search-button-border)] focus-visible:ring-4 focus-visible:ring-emerald-800"
+          className="w-12 aspect-[1/1] bg-[var(--color-search-button-bg)] rounded-full flex items-center justify-center border-2 border-[var(--color-search-button-border)] focus-visible:ring-4 focus-visible:ring-emerald-800"
           type="submit"
         >
           <SearchIcon />

@@ -19,7 +19,7 @@
   --color-topbar-text: var(--color-yellow);
 
   --color-border: var(--color-yellow);
-  --color-serch-button-bg: var(--color-yellow);
+  --color-search-button-bg: var(--color-yellow);
   --color-search-input-bg: var(--color-gray-medium);
   --color-search-input-border: var(--color-yellow);
   --color-search-input-line: var(--color-yellow);
@@ -39,10 +39,13 @@
   --color-button-circle-border: var(--color-gray-dark);
 
   --color-badge-bg: var(--color-yellow);
-  --color-badget-text: var(--color-black);
+  --color-badge-text: var(--color-black);
 
   --color-bar-text: var(--color-gray-medium);
   --color-bar-bg: var(--color-black);
+
+  --color-carrousel-border: var(--color-yellow);
+  --color-carrousel-button-text: var(--color-yellow);
 }
 
 @media (prefers-color-scheme: dark) {

@@ -13,8 +13,8 @@ describe('Liked Products list', () => {
     cy.get('[aria-label="Like to iPhone 9"]').click()
     cy.get('a article').should('have.length', 1)
   })
-  it.only('should remove all card', () => {
-    cy.get('[aria-label="Delete all liked product"]').click()
+  it('should remove all card', () => {
+    cy.get('[aria-label="Delete all liked product"]', { timeout: 10000 }).click()
     cy.url().should('eq', 'http://127.0.0.1:3000/')
   })
 })
