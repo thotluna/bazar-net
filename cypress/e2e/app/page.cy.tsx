@@ -14,7 +14,7 @@ describe('Page Home', () => {
       cy.get('input').should('have.attr', 'placeholder', 'Search')
     })
     it('Input arial-label', () => {
-      cy.get('input').should('have.attr', 'aria-label', 'Search')
+      cy.get('input').should('have.attr', 'aria-label', 'Search input')
     })
     it('Button submit', () => {
       cy.get('button[type="submit"]').children().should('have.attr', 'aria-label', 'submit')
