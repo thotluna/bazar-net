@@ -12,7 +12,7 @@ export function CardProduct({ product }: Props) {
 
   return (
     <Link href={`/products/${product.id}`} aria-label={`Got to Detail of ${product.title}`}>
-      <article className="w-36 h-72 rounded-lg overflow-hidden border border-[var(--color-yellow)] flex flex-col items-center justify-between hover:shadow-md hover:scale-105 transition-all duration-200 p-2">
+      <article className="w-36 h-72 rounded-lg overflow-hidden flex flex-col items-center justify-between shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 p-2">
         <div className="relative w-full">
           <picture className="w-full h-44 flex items-center justify-center rounded-md overflow-hidden">
             <img className="object-cover w-full h-full" src={product.thumbnail} alt={product.title} />

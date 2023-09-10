@@ -1,14 +1,11 @@
-import { ProductCollection } from '@/components/products-collection'
+import { ProductLikedCollection } from '@/components/product-liked-collection'
 import { GetAllProductByIds } from '@/modules/products/application/get-all-product-by-ids'
-import { ProductRepository } from '@/modules/products/domain'
-import { ApiProductRepository } from '@/modules/products/intraestructure/api-repository'
 
 async function getAllProduct(ids?: string | string[] | undefined) {
   if (!ids) return undefined
   const query = Array.isArray(ids) ? ids.map((id) => Number(id)) : [Number(ids)]
 
-  const productsRepository: ProductRepository = ApiProductRepository
-  return GetAllProductByIds(productsRepository, query)
+  return GetAllProductByIds(query)
 }
 
 export default async function Products({
@@ -26,7 +23,7 @@ export default async function Products({
           className="w-full mt-2 grid gap-4 justify-items-center place-content-start "
           style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(8rem, 1fr))' }}
         >
-          <ProductCollection products={products} />
+          <ProductLikedCollection products={products} />
         </section>
       )}
     </section>

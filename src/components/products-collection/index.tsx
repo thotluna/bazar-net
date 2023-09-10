@@ -1,3 +1,4 @@
+'use client'
 import { Product } from '@/modules/items/domain/product'
 import { CardProduct } from '../card-product'
 
