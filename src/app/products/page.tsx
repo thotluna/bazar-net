@@ -2,7 +2,7 @@ import { EmptyProducts } from '@/components/empty-products'
 import { ProductCollection } from '@/components/products-collection'
 import { GetAllProducts } from '@/modules/products/application/get-all-products'
 import { ProductRepository } from '@/modules/products/domain'
-import { ApiProductRepository } from '@/modules/products/intraestructure/api-repository'
+import { ApiProductRepository } from '@/modules/products/infrastructure/api-repository'
 
 async function getAllProductWithQuery(query: string) {
   const repository: ProductRepository = ApiProductRepository
