@@ -6,6 +6,12 @@ import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { CardProduct } from '../card-product'
 
+async function getAllProduct(ids?: number[]) {
+  if (!ids) return undefined
+
+  return GetAllProductByIds(ids)
+}
+
 interface Props {
   products: Product[]
 }
@@ -16,7 +22,7 @@ export function ProductLikedCollection({ products }: Props) {
   const route = useRouter()
 
   useEffect(() => {
-    GetAllProductByIds(newList).then((prod) => setProduct(prod!))
+    getAllProduct(newList).then((prod) => setProduct(prod!))
 
     if (newList.length === 0) route.back()
   }, [newList, route])
