@@ -6,8 +6,8 @@ const API_URL_BASE = process.env.NEXT_PUBLIC_API_URL
 
 export const ApiProductRepository: ProductRepository = {
   getAllProducts: (query?: string) => getAllProducts(query),
-
-  getListByIds: (ids: number[]) => getListByIds(ids)
+  getListByIds: (ids: number[]) => getListByIds(ids),
+  get: (id: number) => get(id)
 }
 
 const getAllProducts = (query?: string) => {
@@ -26,4 +26,8 @@ const getListByIds = (ids: number[]): Promise<Product[]> => {
     }
   })
   return fetch(url).then((data) => data.json())
+}
+
+const get = (id: number): Promise<Product> => {
+  return fetch(`${API_URL_BASE}/items/${id}`).then((res) => res.json())
 }
