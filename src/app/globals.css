@@ -27,6 +27,7 @@
   --color-search-input-text: var(--color-black);
 
   --color-card-title-test: var(--color-gray-dark);
+  --color-price-rebate: var(--color-gray-dark);
   --color-price-text: var(--color-black);
   --color-liked-text: var(--color-yellow);
   --color-no-liked-text: var(var(--color-gray-dark));
