@@ -23,7 +23,7 @@ export function BottomBar() {
         )}
       </div>
       <div className="flex items-center justify-between border-s border-[var(--color-bar-text)] gap-2">
-        <ShoppingCarButton href="/shopping-car" productCount={0} />
+        <ShoppingCarButton href="/shopping-car" />
         {isLikedPage ? <DeleteAllLikes /> : <LikedButton />}
         <ProfileButton href="#" />
       </div>

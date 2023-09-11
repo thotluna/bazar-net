@@ -13,6 +13,7 @@ export const useShoppingCarStore = create<StateShoppingCar>((set, get) => ({
     set((state) => ({
       ...state,
       ids: {
+        ...state.ids,
         [id]: state.ids[id] ? state.ids[id] + 1 : 1
       }
     }))
@@ -21,6 +22,7 @@ export const useShoppingCarStore = create<StateShoppingCar>((set, get) => ({
     set((state) => ({
       ...state,
       ids: {
+        ...state.ids,
         [id]: state.ids[id] && state.ids[id] > 1 ? state.ids[id] - 1 : 0
       }
     }))
