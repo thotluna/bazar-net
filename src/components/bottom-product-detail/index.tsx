@@ -32,7 +32,10 @@ export function BottomProductDetail({ product }: { product: Product }) {
         </span>
       </article>
       <LikeButton idProduct={product.id} active={exist(product.id)} />
-      <ButtonShopping id={product.id} />
+      <div>
+        <span className="text-sm mb-2 block">disposable {product.stock} units </span>
+        <ButtonShopping id={product.id} available={product.stock} />
+      </div>
     </section>
   )
 }
