@@ -4,10 +4,33 @@ import { Carrousel } from '@/components/carrousel'
 import { GetProduct } from '@/modules/products/application/get-product'
 import { ProductRepository } from '@/modules/products/domain'
 import { ApiProductRepository } from '@/modules/products/infrastructure/api-repository'
+import type { Metadata, ResolvingMetadata } from 'next'
 
 async function getProduct(id: number) {
   const repository: ProductRepository = ApiProductRepository
   return GetProduct(repository, id)
+}
+
+type Props = {
+  params: { id: number }
+}
+
+export async function generateMetadata({ params }: Props, parent: ResolvingMetadata): Promise<Metadata> {
+  const id = params.id
+
+  const product = await getProduct(id)
+
+  const previousImages = (await parent).openGraph?.images || []
+
+  return {
+    title: product.title,
+    description: product.description,
+    openGraph: {
+      title: product.title,
+      url: `https://bazar-net.vercel.app/products/${id}`,
+      images: [product.thumbnail, ...previousImages]
+    }
+  }
 }
 
 export default async function details({ params }: { params: { id: number } }) {
