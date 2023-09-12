@@ -20,7 +20,7 @@ describe('Page Home', () => {
       cy.get('button[type="submit"]').children().should('have.attr', 'aria-label', 'submit')
     })
     it('Button Shopping car list', () => {
-      cy.get('a[href="/shopping-car"]')
+      cy.get('a[href^="/shopping-car"]')
     })
     it('Button Liked list', () => {
       cy.get('a [aria-label="Go to Likes products list"]')
@@ -45,7 +45,7 @@ describe('Page Home', () => {
       cy.url({ timeout: 10000 }).should('include', '/products/1')
     })
     it('to Shopping car', () => {
-      cy.get('a[href="/shopping-car"]').click()
+      cy.get('a[href^="/shopping-car"]').click()
       cy.url({ timeout: 10000 }).should('include', '/shopping-car')
     })
     it('to Liked product', () => {
