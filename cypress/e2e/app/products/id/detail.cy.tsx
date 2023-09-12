@@ -1,3 +1,5 @@
+import { KEY_SHOPPING_CAR } from '../../../../../src/modules/shopping-car/infrastructure/local-storage-shopping-car'
+
 describe('Result search products', () => {
   beforeEach(() => {
     cy.visit('/products/1')
@@ -65,13 +67,43 @@ describe('Result search products', () => {
         cy.contains('Product in shopping card:')
         cy.contains('0 und')
         cy.get('button [aria-label="add product"]').wait(500).should('be.visible').click()
-        //TODO: not found click
+        cy.contains('1 und')
       })
       it('should decrement one product', () => {
         cy.contains('Product in shopping card:')
         cy.contains('0 und')
+        cy.get('button [aria-label="add product"]').wait(500).should('be.visible').click()
+        cy.contains('1 und')
         cy.get('button [aria-label="subtract product"]').wait(500).should('be.visible').click()
-        //TODO: not found click
+        cy.contains('0 und')
+      })
+      it('should not decrement one product after 0', () => {
+        cy.contains('Product in shopping card:')
+        cy.contains('0 und')
+        cy.get('button [aria-label="subtract product"]').wait(500).should('be.visible').click()
+        cy.contains('0 und')
+      })
+      it.skip('should not add one product after the stock', () => {
+        cy.contains('Product in shopping card:')
+        cy.contains('0 und')
+        let count = 0
+        const stock = 94
+        do {
+          cy.get('button [aria-label="subtract product"]').wait(500).should('be.visible').click()
+          const text = count <= 94 ? `${count} und` : `${stock} und`
+          cy.contains(text)
+          count++
+        } while (count <= stock + 1)
+      })
+      it('should persist in Local Storage', () => {
+        localStorage.clear()
+        cy.contains('Product in shopping card:')
+        cy.contains('0 und')
+        cy.get('button [aria-label="add product"]').wait(500).should('be.visible').click()
+        cy.contains('1 und')
+        cy.location().should(() => {
+          expect(localStorage.getItem(KEY_SHOPPING_CAR)).to.equal('{"1":1}')
+        })
       })
     })
   })
