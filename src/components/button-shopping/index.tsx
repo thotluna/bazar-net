@@ -19,11 +19,11 @@ export function ButtonShopping({ id, available }: { id: number; available: numbe
       <h3 className="text-sm font-semibold">Product in shopping card:</h3>
       <div className="w-full max-w-[141px] flex-1 flex items-center border-2 border-[var(--color-border)] rounded-full py-2  ">
         <button className="text-[var(--color-border)]" onClick={() => counter - 1 >= 0 && sub(id)}>
-          <ArrowBack label="add" />
+          <ArrowBack label="subtract product" />
         </button>
         <span className="flex-1 font-semibold text-1xl sm:text-2xl">{counter || 0} und</span>
         <button className="rotate-180 text-[var(--color-border)]" onClick={() => available >= counter + 1 && add(id)}>
-          <ArrowBack label="sum" />
+          <ArrowBack label="add product" />
         </button>
       </div>
     </article>
