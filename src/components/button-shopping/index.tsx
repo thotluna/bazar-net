@@ -21,7 +21,7 @@ export function ButtonShopping({ id, available }: { id: number; available: numbe
         <button className="text-[var(--color-border)]" onClick={() => counter - 1 >= 0 && sub(id)}>
           <ArrowBack label="add" />
         </button>
-        <span className="flex-1 font-semibold text-1xl sm:text-2xl">{counter} und</span>
+        <span className="flex-1 font-semibold text-1xl sm:text-2xl">{counter || 0} und</span>
         <button className="rotate-180 text-[var(--color-border)]" onClick={() => available >= counter + 1 && add(id)}>
           <ArrowBack label="sum" />
         </button>

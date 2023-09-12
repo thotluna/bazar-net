@@ -19,14 +19,14 @@ export function Carrousel({ thumbnail, images, title, rating }: Props) {
   return (
     <>
       <div className="w-full aspect-auto flex items-center justify-center mb-2">
-        <figure className=" relative mx-auto max-h-40 sm:max-h-52 flex items-center justify-center ">
+        <figure className=" relative mx-auto  sm:max-h-60 sm:aspect-[16/9] flex items-center justify-center ">
           <img
             data-testid="preview-image"
-            className="rounded-xl max-h-40 sm:max-h-52 object-cover shadow-md "
+            className="rounded-xl w-full sm:w-[460px] max-h-60 sm: object-cover shadow-md "
             src={images[srcPicture] || thumbnail}
             alt={title}
           />
-          <div className="absolute top-2 -end-6">
+          <div className="absolute top-2 end-1 sm:-end-6">
             <RaitingBar value={rating} />
           </div>
         </figure>
