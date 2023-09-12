@@ -1,17 +1,20 @@
 'use client'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-// import { LikedButton } from '../Liked-button'
-import dynamic from 'next/dynamic'
+import { DeleteAllCar } from '../delete-all-car'
 import { DeleteAllLikes } from '../delete-all-likes'
 import { ProfileButton } from '../profile-button'
-import { ShoppingCarButton } from '../shopping-car-button'
 const LikedButton = dynamic(() => import('../Liked-button').then((mod) => mod.LikedButton), { ssr: false })
+const ShoppingCarButton = dynamic(() => import('../shopping-car-button').then((mod) => mod.ShoppingCarButton), {
+  ssr: false
+})
 
 export function BottomBar() {
   const path = usePathname()
   const isHome = path === '/'
   const isLikedPage = path === '/products-liked'
+  const isShoppingCar = path === '/shopping-car'
 
   return (
     <footer className="sticky z-20 bottom-0 bg-[var(--color-bar-bg)] px-4 h-16 flex justify-between items-center">
@@ -23,7 +26,7 @@ export function BottomBar() {
         )}
       </div>
       <div className="flex items-center justify-between border-s border-[var(--color-bar-text)] gap-2">
-        <ShoppingCarButton href="/shopping-car" />
+        {isShoppingCar ? <DeleteAllCar /> : <ShoppingCarButton />}
         {isLikedPage ? <DeleteAllLikes /> : <LikedButton />}
         <ProfileButton href="#" />
       </div>
