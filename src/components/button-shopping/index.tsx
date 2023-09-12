@@ -21,13 +21,13 @@ export function ButtonShopping({ id, available }: { id: number; available: numbe
   }
 
   return (
-    <article className="flex flex-col items-center gap-1">
-      <h3 className="text-sm font-semibold">Product in shopping card:</h3>
+    <article className="min-w-max flex flex-col items-center gap-1">
+      <h3 className="text-xs sm:text-sm collapse sm:visible font-semibold">Product in shopping card:</h3>
       <div className="w-full max-w-[141px] flex-1 flex items-center border-2 border-[var(--color-border)] rounded-full py-2  ">
         <button className="text-[var(--color-border)]" onClick={subHandler}>
           <ArrowBack label="subtract product" />
         </button>
-        <span className="flex-1 font-semibold text-1xl sm:text-2xl" suppressHydrationWarning={true}>
+        <span className="flex-1 font-semibold text-lg sm:text-2xl" suppressHydrationWarning={true}>
           {counter || 0} und
         </span>
         <button className="rotate-180 text-[var(--color-border)]" onClick={addHandler}>
