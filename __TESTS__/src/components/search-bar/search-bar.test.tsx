@@ -1,6 +1,5 @@
 import { SearchBar } from '@/components/search-bar'
 import { fireEvent, render, screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
 import { useRouter } from 'next/navigation'
 
 jest.mock('next/navigation')
@@ -29,7 +28,7 @@ describe.only('SearchBar component', () => {
     expect(input).toBeInTheDocument()
     expect(button).toBeInTheDocument()
     expect(form).toBeInTheDocument()
-    await userEvent.type(input, 'test')
+    fireEvent.change(input, { target: { value: 'test' } })
     fireEvent.submit(form)
 
     expect(mockRouterPush).toHaveBeenCalled()
