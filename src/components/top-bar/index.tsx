@@ -10,6 +10,8 @@ export function TopBar() {
 
   const style = isHome ? 'h-24 justify-center text-3xl' : 'h-12 justify-start text-base'
 
+  const widthLogo = isHome ? 'w-12' : 'w-8'
+
   return (
     <header
       data-testid="header"
@@ -20,7 +22,10 @@ export function TopBar() {
           <ArrowBack label="Return" />
         </button>
       )}
-      <h1 className="text-[var(--color-topbar-text)]  font-semibold">BAZAR-NET</h1>
+      <div className="flex items-center justify-center gap-1">
+        <img className={`${widthLogo}`} src="/bazar-net.svg" alt="logo" />
+        <h1 className="text-[var(--color-topbar-text)]  font-semibold">BAZAR-NET</h1>
+      </div>
     </header>
   )
 }

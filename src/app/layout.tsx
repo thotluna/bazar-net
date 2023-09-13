@@ -13,6 +13,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="32x32" />
+      </head>
       <body className={`${inter.className} w-screen h-screen container m-auto  max-w-3xl min-w-[370px] bg-slate-950`}>
         <main className="bg-[var(--color-bg)] min-h-full flex flex-col">
           <TopBar />
