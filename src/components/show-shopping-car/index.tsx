@@ -48,9 +48,15 @@ export function ShowShoppingCar({ productsCarOriginal }: { productsCarOriginal: 
           })
 
           clone.count = Object.values(car).reduce((acc, value) => acc + value)
-          clone.price = clone.products.map((p) => p.total.price).reduce((acc, value) => acc + value)
-          clone.saved = clone.products.map((p) => p.total.saved).reduce((acc, value) => acc + value)
-          clone.total = clone.products.map((p) => p.total.total).reduce((acc, value) => acc + value)
+          clone.price = clone.products?.length
+            ? clone.products.map((p) => p.total.price).reduce((acc, value) => acc + value)
+            : 0
+          clone.saved = clone.products?.length
+            ? clone.products.map((p) => p.total.saved).reduce((acc, value) => acc + value)
+            : 0
+          clone.total = clone.products?.length
+            ? clone.products.map((p) => p.total.total).reduce((acc, value) => acc + value)
+            : 0
         }
       })
       return clone

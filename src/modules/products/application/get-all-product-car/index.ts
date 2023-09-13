@@ -3,7 +3,8 @@ import { ProductToCar, ProductsCar } from '../../domain/product-cost'
 
 export function GetAllProductsCar(repository: ProductRepository, car: Record<number, number>): Promise<ProductsCar> {
   const ids = Object.keys(car).map((id) => Number(id))
-  const quantity = Object.values(car).reduce((acc, value) => acc + value)
+  const carValues = Object.values(car)
+  const quantity = carValues?.length ? carValues.reduce((acc, value) => acc + value) : 0
 
   return repository.getListByIds(ids).then((products) => {
     const productsToCar = products
@@ -33,9 +34,18 @@ export function GetAllProductsCar(repository: ProductRepository, car: Record<num
     return {
       products: productsToCar,
       count: quantity,
-      price: productsToCar.map((product) => product.total.price).reduce((acc, value) => acc + value),
-      saved: productsToCar.map((product) => product.total.saved).reduce((acc, value) => acc + value),
-      total: productsToCar.map((product) => product.total.total).reduce((acc, value) => acc + value)
+      price:
+        productsToCar?.length > 0
+          ? productsToCar.map((product) => product.total.price).reduce((acc, value) => acc + value)
+          : 0,
+      saved:
+        productsToCar?.length > 0
+          ? productsToCar.map((product) => product.total.saved).reduce((acc, value) => acc + value)
+          : 0,
+      total:
+        productsToCar?.length > 0
+          ? productsToCar.map((product) => product.total.total).reduce((acc, value) => acc + value)
+          : 0
     } satisfies ProductsCar
   })
 }
