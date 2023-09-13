@@ -55,8 +55,13 @@ export function ShowShoppingCar({ productsCarOriginal }: { productsCarOriginal: 
       })
       return clone
     })
+  }, [car])
 
-    getAllProduct(car).then(setProductCar)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      getAllProduct(car).then(setProductCar)
+    }, 500)
+    return () => clearInterval(interval)
   }, [car])
 
   const { products } = productsCar
