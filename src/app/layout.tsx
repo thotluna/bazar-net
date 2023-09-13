@@ -7,7 +7,12 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Bazar-Net',
-  description: 'Your online shop'
+  description: 'Your online shop',
+  openGraph: {
+    title: 'Bazar-Net',
+    url: `https://bazar-net.vercel.app`,
+    images: ['https://bazar-net.vercel.app/bazar-net.svg']
+  }
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

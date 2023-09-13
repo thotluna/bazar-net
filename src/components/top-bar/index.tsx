@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 import { ArrowBack } from '@/components/icons'
 import { usePathname, useRouter } from 'next/navigation'
