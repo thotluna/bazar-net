@@ -3,10 +3,23 @@ import { SearchBar } from '@/components/search-bar'
 import { GetAllProducts } from '@/modules/products/application/get-all-products'
 import { ProductRepository } from '@/modules/products/domain'
 import { ApiProductRepository } from '@/modules/products/infrastructure/api-repository'
+import type { Metadata, ResolvingMetadata } from 'next'
 
 async function getAllProduct(query?: string) {
   const repository: ProductRepository = ApiProductRepository
   return GetAllProducts(repository, query)
+}
+
+export async function generateMetadata(parent: ResolvingMetadata): Promise<Metadata> {
+  const previousImages = (await parent).openGraph?.images || []
+
+  return {
+    openGraph: {
+      title: 'Bazar-Net',
+      url: `https://bazar-net.vercel.app`,
+      images: ['https://bazar-net.vercel.app/bazar-net.svg', ...previousImages]
+    }
+  }
 }
 
 export default async function Home() {
