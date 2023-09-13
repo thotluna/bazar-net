@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Bazar-Net',
     url: `https://bazar-net.vercel.app`,
-    images: ['https://bazar-net.vercel.app/bazar-net.svg']
+    images: ['https://bazar-net.vercel.app/bazar-net.png']
   }
 }
 
