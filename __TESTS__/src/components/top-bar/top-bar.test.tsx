@@ -24,7 +24,7 @@ describe('TopBar Components', () => {
 
     const component = screen.queryByTestId('header')
     expect(component).toBeInTheDocument()
-    expect(component).toHaveClass('text-3xl')
+    expect(component).toHaveClass('text-4xl')
     expect(component).toHaveClass('justify-center')
   })
   it('should render when is not in base route', async () => {
@@ -35,7 +35,7 @@ describe('TopBar Components', () => {
 
     const component = screen.queryByTestId('header')
     expect(component).toBeInTheDocument()
-    expect(component).toHaveClass('text-base')
+    expect(component).toHaveClass('text-2xl')
     expect(component).toHaveClass('justify-start')
   })
 })
