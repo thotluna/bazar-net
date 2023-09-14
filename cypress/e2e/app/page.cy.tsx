@@ -56,7 +56,7 @@ describe('Page Home', () => {
       cy.get('button > svg[aria-label="Like to iPhone 9"]').parent().click()
       cy.get('button > svg[aria-label="Like to iPhone 9"]')
         .parent()
-        .should('have.class', 'border-[var(--color-button-circle-border-active)]')
+        .should('have.class', 'bg-[var(--color-bg-circle-button-active)]')
     })
   })
   describe('LikedProducts', () => {

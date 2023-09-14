@@ -20,41 +20,41 @@ describe('Result search products', () => {
   describe('carrousel component', () => {
     it('should render images next in preview', () => {
       cy.get('img[alt="iPhone 9"').should('have.attr', 'src', 'https://i.dummyjson.com/data/products/1/1.jpg')
-      cy.get('img[alt^="Image #0"]').parent().should('have.class', 'border-[var(--color-border)]')
+      cy.get('img[alt^="Image #0"]').parent().should('have.class', 'border-[var(--color-carrousel-border)]')
 
       cy.get('[aria-label="next image"]').parent().wait(500).should('be.visible').click()
 
       cy.get('img[alt="iPhone 9"').should('have.attr', 'src', 'https://i.dummyjson.com/data/products/1/2.jpg')
       cy.get('img[alt^="Image #0"]').parent().should('have.class', 'border-transparent')
-      cy.get('img[alt^="Image #1"]').parent().should('have.class', 'border-[var(--color-border)]')
+      cy.get('img[alt^="Image #1"]').parent().should('have.class', 'border-[var(--color-carrousel-border)]')
     })
     it('should render images back in preview', () => {
       cy.get('img[alt="iPhone 9"').should('have.attr', 'src', 'https://i.dummyjson.com/data/products/1/1.jpg')
-      cy.get('img[alt^="Image #0"]').parent().should('have.class', 'border-[var(--color-border)]')
+      cy.get('img[alt^="Image #0"]').parent().should('have.class', 'border-[var(--color-carrousel-border)]')
 
       cy.get('button [aria-label="back image"]').wait(500).should('be.visible').click()
       cy.get('img[alt^="Image #0"]').parent().should('have.class', 'border-transparent')
-      cy.get('img[alt^="Image #4"]').parent().should('have.class', 'border-[var(--color-border)]')
+      cy.get('img[alt^="Image #4"]').parent().should('have.class', 'border-[var(--color-carrousel-border)]')
     })
     it('should render images clicked in preview', () => {
       cy.get('img[alt="iPhone 9"').should('have.attr', 'src', 'https://i.dummyjson.com/data/products/1/1.jpg')
-      cy.get('img[alt^="Image #0"]').parent().should('have.class', 'border-[var(--color-border)]')
+      cy.get('img[alt^="Image #0"]').parent().should('have.class', 'border-[var(--color-carrousel-border)]')
 
       cy.get('img[alt^="Image #4"]').wait(500).should('be.visible').click()
       cy.get('img[alt="iPhone 9"').should('have.attr', 'src', 'https://i.dummyjson.com/data/products/1/thumbnail.jpg')
       cy.get('img[alt^="Image #0"]').parent().should('have.class', 'border-transparent')
-      cy.get('img[alt^="Image #4"]').parent().should('have.class', 'border-[var(--color-border)]')
+      cy.get('img[alt^="Image #4"]').parent().should('have.class', 'border-[var(--color-carrousel-border)]')
     })
     it('should render fir image after click next button', () => {
       cy.get('img[alt^="Image #4"]').wait(500).should('be.visible').click()
       cy.get('img[alt="iPhone 9"').should('have.attr', 'src', 'https://i.dummyjson.com/data/products/1/thumbnail.jpg')
-      cy.get('img[alt^="Image #4"]').parent().should('have.class', 'border-[var(--color-border)]')
+      cy.get('img[alt^="Image #4"]').parent().should('have.class', 'border-[var(--color-carrousel-border)]')
 
       cy.get('[aria-label="next image"]').parent().wait(500).should('be.visible').click()
 
       cy.get('img[alt^="Image #4"]').parent().should('have.class', 'border-transparent')
 
-      cy.get('img[alt^="Image #0"]').parent().should('have.class', 'border-[var(--color-border)]')
+      cy.get('img[alt^="Image #0"]').parent().should('have.class', 'border-[var(--color-carrousel-border)]')
 
       cy.get('img[alt="iPhone 9"').should('have.attr', 'src', 'https://i.dummyjson.com/data/products/1/1.jpg')
     })
