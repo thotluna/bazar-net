@@ -25,7 +25,7 @@ export function TopBar() {
       )}
       <div className="flex items-center justify-center gap-1">
         <img className={`${widthLogo}`} src="/bazar-net.svg" alt="logo" />
-        <h1 className="text-[var(--color-topbar-text)]  font-semibold ">BAZAR-NET</h1>
+        <h2 className="text-[var(--color-topbar-text)]  font-semibold ">BAZAR-NET</h2>
       </div>
     </header>
   )

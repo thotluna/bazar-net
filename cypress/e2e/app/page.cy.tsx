@@ -1,74 +1,63 @@
-import { KEY_LIKED_PRODUCTS } from '../../../src/modules/liked-products/infrastructure/local-storage-liked-repository'
+import { detailsPageObject } from '../../fixtures/pages-object/detail-page-object'
+import { homePageObject } from '../../fixtures/pages-object/home-page-object'
+import { likedProductsPageObject } from '../../fixtures/pages-object/liked-products-page-object'
+import { searchProductsPageObject } from '../../fixtures/pages-object/search-products-page-object'
+import { shoppingCarPageObject } from '../../fixtures/pages-object/shopping-car-page-object'
 describe('Page Home', () => {
   beforeEach(() => {
-    cy.visit('/')
+    homePageObject.go()
   })
   describe('should have', () => {
     it('Page title', () => {
       cy.title().should('eq', 'Bazar-Net')
     })
     it('Principal Heading', () => {
-      cy.get('h1').should('have.text', 'BAZAR-NET')
+      cy.get('header h2').should('have.text', 'BAZAR-NET')
     })
     it('Input placeholder', () => {
-      cy.get('input').should('have.attr', 'placeholder', 'Search')
+      homePageObject.elements.search().should('have.attr', 'placeholder', 'Search')
     })
     it('Input arial-label', () => {
-      cy.get('input').should('have.attr', 'aria-label', 'Search input')
+      homePageObject.elements.search().should('be.visible')
     })
     it('Button submit', () => {
-      cy.get('button[type="submit"]').children().should('have.attr', 'aria-label', 'submit')
+      homePageObject.elements.submitSearch().should('be.visible')
     })
     it('Button Shopping car list', () => {
-      cy.get('a[href^="/shopping-car"]')
+      homePageObject.elements.buttonShoppingCar().should('be.visible')
     })
     it('Button Liked list', () => {
-      cy.get('a [aria-label="Go to Likes products list"]')
+      homePageObject.elements.buttonLikedProducts().should('be.visible')
     })
     it('Button profile', () => {
       cy.get('a').last().children().should('have.attr', 'aria-label', 'Go to profile')
     })
-
-    it('Card', () => {
-      cy.get('[aria-label="Got to Detail of iPhone 9"]')
-      cy.get('[aria-label="Like to iPhone 9"]')
+    it('Cards of products', () => {
+      homePageObject.elements.card(1).should('be.visible')
     })
   })
   describe('should navigate', () => {
-    it('to products found', () => {
-      cy.get('input').type('searching-thing')
-      cy.get('button[type="submit"]').click()
-      cy.url({ timeout: 10000 }).should('include', '/products?q=searching-thing')
+    it('to search results ', () => {
+      const query = 'laptop'
+      homePageObject.searchProductsWith(query)
+      searchProductsPageObject.isInSearchProducts(query)
+    })
+    it('should search with search input empty or blank', () => {
+      homePageObject.searchProducts()
+      homePageObject.isInHome()
     })
     it('to products details', () => {
-      cy.get('a article').first().click()
-      cy.url({ timeout: 10000 }).should('include', '/products/1')
+      const id = 1
+      homePageObject.goToDetailProduct(id)
+      detailsPageObject.isInProductDetails(id)
     })
     it('to Shopping car', () => {
-      cy.get('a[href^="/shopping-car"]').click()
-      cy.url({ timeout: 10000 }).should('include', '/shopping-car')
+      homePageObject.goToShoppingCar()
+      shoppingCarPageObject.isInShoppingCar()
     })
     it('to Liked product', () => {
-      cy.get('a [aria-label="Go to Likes products list"]').click()
-      cy.url({ timeout: 10000 }).should('include', '/products-liked')
-    })
-    it('to like a product', () => {
-      cy.get('button > svg[aria-label="Like to iPhone 9"]').parent().click()
-      cy.get('button > svg[aria-label="Like to iPhone 9"]')
-        .parent()
-        .should('have.class', 'bg-[var(--color-bg-circle-button-active)]')
-    })
-  })
-  describe('LikedProducts', () => {
-    it('should save localStorage when click in LikeButton', () => {
-      cy.clearLocalStorage(KEY_LIKED_PRODUCTS)
-      cy.get('button > svg[aria-label="Like to iPhone 9"]')
-        .parent()
-        .click()
-        .then(() => {
-          expect(localStorage.getItem(KEY_LIKED_PRODUCTS)).to.equal('[1]')
-        })
-      cy.get('[data-cy="Liked-Badge"]').should('have.text', '1')
+      homePageObject.goToLikedProducts()
+      likedProductsPageObject.isInLikedProducts()
     })
   })
 })

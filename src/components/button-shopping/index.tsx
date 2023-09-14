@@ -29,6 +29,7 @@ export function ButtonShopping({ id, available }: { id: number; available: numbe
           <ArrowBack label="subtract product" />
         </button>
         <span
+          arial-label="number of products added to cart"
           className="flex-1 w-full text-center font-semibold text-lg text-[var(--color-gray-light)] sm:text-2xl"
           suppressHydrationWarning={true}
         >

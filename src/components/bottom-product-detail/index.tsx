@@ -24,11 +24,11 @@ export function BottomProductDetail({ product }: { product: ProductDetail }) {
           <span className="pr-1">saved: </span>
           {format.format(product.saved)}
         </span>
-        <span className="text-4xl font-semibold pt-2 text-[var(--color-card-text)]">
+        <span aria-label="total" className="text-4xl font-semibold pt-2 text-[var(--color-card-text)]">
           {format.format(product.total)}
         </span>
       </article>
-      <LikeButton idProduct={product.id} active={exist(product.id)} />
+      <LikeButton idProduct={product.id} label="Like this product" active={exist(product.id)} />
       <div>
         <span className="text-sm mb-2 block text-[var(--color-card-text-paragraph)]">
           disposable {product.stock} units{' '}
