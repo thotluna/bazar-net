@@ -22,10 +22,10 @@ export function CardProduct({ product }: Props) {
           </div>
         </div>
         <RaitingBar value={product.rating} />
-        <h2 className="w-full text-center font-semibold text-[var(--color-card-title-test)] text-sm whitespace-nowrap text-ellipsis overflow-hidden">
+        <h2 className="w-full text-center font-semibold text-[var(--color-card-text)] text-sm whitespace-nowrap text-ellipsis overflow-hidden">
           {product.title}
         </h2>
-        <h3 className="font-semibold text-[var(--color-price-text)]">
+        <h3 className="font-semibold text-[var(--color-card-text-off)]">
           {new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(price)}
         </h3>
       </article>

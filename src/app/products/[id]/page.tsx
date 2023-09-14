@@ -41,9 +41,9 @@ export default async function details({ params }: { params: { id: number } }) {
     <section className="flex-1 flex flex-col gap-4 px-2 py-16 w-full text-center">
       <Carrousel thumbnail={product.thumbnail} images={product.images} rating={product.rating} title={product.title} />
       <section>
-        <h1 className="text-4xl font-semibold p-2 py-8">{product.title}</h1>
+        <h1 className="text-4xl font-semibold p-2 py-8 text-[var(--color-card-text)]">{product.title}</h1>
         <div className="w-full flex justify-center">
-          <p className="block text-[var(--color-price-rebate)] max-w-[535px]">{product.description}</p>
+          <p className="block text-[var(--color-card-text-paragraph)] max-w-[535px]">{product.description}</p>
         </div>
       </section>
       <BottomProductDetail product={product} />

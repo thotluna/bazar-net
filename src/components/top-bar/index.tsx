@@ -9,7 +9,7 @@ export function TopBar() {
 
   const { back } = useRouter()
 
-  const style = isHome ? 'h-24 justify-center text-3xl' : 'h-12 justify-start text-base'
+  const style = isHome ? 'h-24 justify-center text-4xl' : 'h-12 justify-start text-2xl'
 
   const widthLogo = isHome ? 'w-12' : 'w-8'
 
@@ -25,7 +25,7 @@ export function TopBar() {
       )}
       <div className="flex items-center justify-center gap-1">
         <img className={`${widthLogo}`} src="/bazar-net.svg" alt="logo" />
-        <h1 className="text-[var(--color-topbar-text)]  font-semibold">BAZAR-NET</h1>
+        <h1 className="text-[var(--color-topbar-text)]  font-semibold ">BAZAR-NET</h1>
       </div>
     </header>
   )

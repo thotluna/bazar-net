@@ -7,16 +7,19 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 
-  --color-yellow: #eab308;
+  --color-blue-harbour: #3e7792;
+  --color-violet-gonzo: #5e04de;
+  --color-violet-vixen: #892a76;
+  --color-rose-razzle-dazzle: #f034cb;
+  --color-gray-dark: #535252;
   --color-black: #171717;
-  --color-gray-dark: #737373;
+  --color-yellow: #eab308;
+
   --color-gray-medium: #d9d9d9;
   --color-gray-light: #f5f5f5;
   --color-white: #ffffff;
 
   --color-bg: var(--color-gray-light);
-
-  --color-topbar-text: var(--color-yellow);
 
   --color-border: var(--color-yellow);
   --color-search-button-bg: var(--color-yellow);
@@ -31,13 +34,6 @@
   --color-price-text: var(--color-black);
   --color-liked-text: var(--color-yellow);
   --color-no-liked-text: var(var(--color-gray-dark));
-  --color-rating-text: var(--color-yellow);
-
-  --color-button-circle-bg: var(--color-gray-medium);
-  --color-button-circle-text-active: var(--color-yellow);
-  --color-button-circle-text: var(--color-gray-dark);
-  --color-button-circle-border-active: var(--color-yellow);
-  --color-button-circle-border: var(--color-gray-dark);
 
   --color-badge-bg: var(--color-yellow);
   --color-badge-text: var(--color-black);
@@ -45,8 +41,55 @@
   --color-bar-text: var(--color-gray-medium);
   --color-bar-bg: var(--color-black);
 
-  --color-carrousel-border: var(--color-yellow);
-  --color-carrousel-button-text: var(--color-yellow);
+  /* circle-button */
+  --color-border-circle-button: var(--color-blue-harbour);
+  /* active */
+  --color-text-circle-button-active: var(--color-white);
+  --color-bg-circle-button-active: var(--color-violet-gonzo);
+  /* inactive */
+  --color-text-circle-button-inactive: var(--color-blue-harbour);
+  --color-bg-circle-button-inactive: var(--color-white);
+
+  /* top-bar */
+  --color-topbar-text: var(--color-rose-razzle-dazzle);
+
+  /* search bar */
+  /* input */
+  --color-search-bar-border: var(--color-blue-harbour);
+  --color-search-bar-bg: var(--color-gray-light);
+  /* button */
+  --color-search-bar-button-border: var(--color-blue-harbour);
+  --color-search-bar-button-bg: var(--color-gray-light);
+  --color-search-bar-button-text: var(--color-blue-harbour);
+  --color-search-bar-button-bg-hover: var(--color-violet-gonzo);
+  --color-search-bar-button-text-hover: var(--color-white);
+
+  /* rating */
+  --color-rating-text: var(--color-blue-harbour);
+
+  /* card */
+  --color-card-text-off: var(--color-blue-harbour);
+  --color-card-text: var(--color-violet-vixen);
+  --color-card-paragraph: var(--color-gray-dark);
+
+  /* button-bar */
+  --color-link-text: var(--color-gray-light);
+  --color-link-text-hover: var(--color-rose-razzle-dazzle);
+
+  /* carrousel */
+  --color-carrousel-border: var(--color-blue-harbour);
+  --color-carrousel-text: var(--color-blue-harbour);
+
+  /* shopping button */
+  --color-shopping-button-border: var(--color-blue-harbour);
+  --color-shopping-button-text: var(--color-blue-harbour);
+
+  /* shopping card total */
+  --color-shopping-card-total-bg: var(--color-black);
+  --color-shopping-card-total-text: var(--color-yellow);
+  --color-shopping-card-total-text-off: var(--color-gray-dark);
+  --color-shopping-card-total-button-bg: var(--color-yellow);
+  --color-shopping-card-total-button-text: var(--color-black);
 }
 
 @media (prefers-color-scheme: dark) {

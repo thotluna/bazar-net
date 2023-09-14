@@ -20,7 +20,7 @@ export function SearchBar() {
         aria-label="Search products"
       >
         <input
-          className="h-12 border-2 border-[var(--color-search-input-border)] rounded-full bg-[var(--color-search-input-bg)] flex-1 px-2 placeholder:text-[var(--color-search-input-placeholder)] focus-visible:border-[var(--color-search-input-border)]"
+          className="h-12 border-2 border-[var(--color-search-bar-border)] rounded-full bg-[var(--color-search-bar-bg)] flex-1 px-2 placeholder:text-[var(--color-search-input-placeholder)] focus-visible:ring-[var(--color-search-bar-border)] focus-visible:ring-2 focus-visible:outline-2 focus-visible:outline-[var(--color-search-bar-border)]"
           type="text"
           aria-label="Search input"
           placeholder="Search"
@@ -29,7 +29,7 @@ export function SearchBar() {
         />
 
         <button
-          className="w-12 aspect-[1/1] bg-[var(--color-search-button-bg)] rounded-full flex items-center justify-center border-2 border-[var(--color-search-button-border)] focus-visible:ring-4 focus-visible:ring-emerald-800"
+          className="w-12 aspect-[1/1] bg-[var(--color-search-bar-button-bg)] border-[var(--color-search-bar-button-border)] text-[var(--color-search-bar-button-text)] hover:bg-[var(--color-search-bar-button-bg-hover)] hover:text-[var(--color-search-bar-button-text-hover)]  rounded-full flex items-center justify-center border-2 focus-visible:ring-2 focus-visible:outline-2 focus-visible:outline-[var(--color-search-bar-border)]"
           type="submit"
         >
           <SearchIcon />

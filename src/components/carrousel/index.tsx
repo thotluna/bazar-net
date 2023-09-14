@@ -34,7 +34,7 @@ export function Carrousel({ thumbnail, images, title, rating }: Props) {
       <section className="flex">
         <button
           onClick={() => setSrcPicture((prev) => (prev > 0 ? prev - 1 : images.length - 1))}
-          className="text-[var(--color-carrousel-button-text)] hover:scale-110 transition-transform duration-150"
+          className="text-[var(--color-carrousel-text)] hover:scale-110 transition-transform duration-150"
         >
           <ArrowBack label="back image" />
         </button>
@@ -43,7 +43,9 @@ export function Carrousel({ thumbnail, images, title, rating }: Props) {
             <button
               key={index}
               onClick={() => setSrcPicture(index)}
-              className={` border-4 ${srcPicture === index ? 'border-[var(--color-border)]' : 'border-transparent'}`}
+              className={` border-4 ${
+                srcPicture === index ? 'border-[var(--color-carrousel-border)]' : 'border-transparent'
+              }`}
             >
               <img
                 data-testid="carrousel-image"
@@ -57,7 +59,7 @@ export function Carrousel({ thumbnail, images, title, rating }: Props) {
         </div>
         <button
           onClick={() => setSrcPicture((prev) => (prev < images.length - 1 ? prev + 1 : 0))}
-          className="rotate-180 text-[var(--color-carrousel-button-text)] hover:scale-110 transition-transform duration-150"
+          className="rotate-180 text-[var(--color-carrousel-text)] hover:scale-110 transition-transform duration-150"
         >
           <ArrowBack label="next image" />
         </button>

@@ -8,13 +8,13 @@ interface Props {
 }
 export function ButtonCircle({ children, onClick, active = false }: Props) {
   const style = active
-    ? 'border-[var(--color-button-circle-border-active)] text-[var(--color-button-circle-text-active)]'
-    : 'border-[var(--color-button-circle-border)] text-[var(--color-button-circle-text)]'
+    ? ' text-[var(--color-text-circle-button-active)] bg-[var(--color-bg-circle-button-active)]'
+    : 'text-[var(--color-text-circle-button-inactive)] bg-[var(--color-bg-circle-button-inactive)]'
 
   return (
     <button
       onClick={onClick}
-      className={`w-12 h-12  bg-[var(--color-button-circle-bg)] rounded-full border-2 ${style} flex items-center justify-center hover:scale-110 transition-transform duration-300`}
+      className={`w-12 h-12 border-[var(--color-border-circle-button)]  rounded-full border-2 ${style} flex items-center justify-center hover:scale-110 transition-all duration-300 focus-visible:ring-2 focus-visible:outline-2 focus-visible:outline-[var(--color-border-circle-button)]`}
     >
       {children}
     </button>
