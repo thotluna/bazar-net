@@ -1,8 +1,9 @@
 'use client'
 import { ProductDetail } from '@/modules/products/domain/product-detail'
 import { useLikeStore } from '@/store/liked'
+import dynamic from 'next/dynamic'
 import { LikeButton } from '..'
-import { ButtonShopping } from '../button-shopping'
+const ButtonShopping = dynamic(() => import('../button-shopping').then((mod) => mod.ButtonShopping), { ssr: false })
 
 const format = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' })
 
