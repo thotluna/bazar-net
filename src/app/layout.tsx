@@ -8,6 +8,7 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Bazar-Net',
   description: 'Your online shop',
+  manifest: 'https://bazar-net.vercel.app/manifest',
   openGraph: {
     title: 'Bazar-Net',
     url: `https://bazar-net.vercel.app`,
