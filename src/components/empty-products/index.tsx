@@ -7,7 +7,7 @@ export function EmptyProducts({ message }: { message: string }) {
   return (
     <article className="flex-1 w-full flex flex-col items-center justify-center gap-2">
       <EmptyDraw width={300} height={240} />
-      <h2 className="text-4xl">{message}</h2>
+      <h2 className="text-3xl sm:text-4xl text-center">{message}</h2>
       <button
         name="Return"
         onClick={() => route.back()}

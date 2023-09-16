@@ -11,7 +11,7 @@ export function BottomProductDetail({ product }: { product: ProductDetail }) {
   const exist = useLikeStore((state) => state.exist)
 
   return (
-    <section className="w-full max-w-[535px] mx-auto flex items-center justify-between gap-2 py-8">
+    <section className="w-full max-w-[535px] mx-auto flex flex-wrap items-center justify-evenly gap-2 py-8">
       <article className="flex-2 flex flex-col gap-1">
         <span className=" text-[var(--color-card-text-paragraph)]">
           <span className="pr-1">price:</span>
