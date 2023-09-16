@@ -17,7 +17,7 @@ export function BottomBar() {
   const isShoppingCar = path === '/shopping-car'
 
   return (
-    <footer className="sticky z-20 bottom-0 bg-[var(--color-bar-bg)] px-4 h-16 flex justify-between items-center">
+    <footer className="fixed left-0 right-0 z-20 bottom-0 max-w-3xl mx-auto  bg-[var(--color-bar-bg)] px-4 h-16 flex justify-between items-center">
       <div className="flex-1 w-full h-full ">
         {!isHome && (
           <Link className="w-full h-full flex items-center justify-center text-[var(--color-bar-text)]" href="/">

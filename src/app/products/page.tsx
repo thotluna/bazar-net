@@ -16,7 +16,7 @@ export default async function Products({ searchParams }: { searchParams?: { [key
   if (resultProduct.products.length === 0) return <EmptyProducts message="Do not have product" />
 
   return (
-    <section className="flex-1 p-2 w-full min-h-full">
+    <section className="flex-1 p-2 w-full min-h-full mb-16">
       <section
         className="w-full mt-2 grid gap-4 justify-items-center place-content-start "
         style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(8rem, 1fr))' }}

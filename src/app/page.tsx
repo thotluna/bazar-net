@@ -13,7 +13,7 @@ export default async function Home() {
   const product = await getAllProduct()
 
   return (
-    <section className="flex-1 p-2 w-full">
+    <section className="flex-1 p-2 w-full mb-16">
       <SearchBar />
       <section
         className="w-full mt-2 grid gap-4 justify-items-center place-content-start "

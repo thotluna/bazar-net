@@ -18,7 +18,7 @@ export function ShowShoppingCar({ productsCarOriginal }: { productsCarOriginal: 
   if (products.length === 0) return <EmptyProducts message="Dont have any products in car" />
 
   return (
-    <section className="flex-1 p-2 flex flex-col gap-2 relative ">
+    <section className="flex-1 p-2 flex flex-col gap-2 relative mb-80">
       {products && products.map((product) => <ProductCardCar key={product.id} product={product} />)}
       <TotalCar products={productsCarOriginal} />
     </section>

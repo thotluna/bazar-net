@@ -38,7 +38,7 @@ export default async function details({ params }: { params: { id: number } }) {
   const product = await getProduct(id)
 
   return (
-    <section className="flex-1 flex flex-col gap-4 px-2 py-16 w-full text-center">
+    <section className="flex-1 flex flex-col gap-4 px-2 py-16 w-full text-center mb-16">
       <Carrousel thumbnail={product.thumbnail} images={product.images} rating={product.rating} title={product.title} />
       <section>
         <h1 className="text-4xl font-semibold p-2 py-8 text-[var(--color-card-text)]">{product.title}</h1>

@@ -16,7 +16,7 @@ export default async function Products({
   const products = await getAllProduct(searchParams?.id)
 
   return (
-    <section className="flex-1 p-2 w-full">
+    <section className="flex-1 p-2 w-full mb-16">
       {!products && <h2 className="text-4xl">No Hay Productos</h2>}
       {products && (
         <section

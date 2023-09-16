@@ -7,9 +7,9 @@ import { RaitingBar } from '../raiting-bar'
 export function ProductCardCar({ product }: { product: ProductToCar }) {
   return (
     <article key={product.id} className="border-2  shadow-md p-2 rounded-2xl">
-      <header className="w-full flex items-center justify-between gap-2">
+      <header className="w-full flex items-center justify-evenly flex-wrap gap-2">
         <div>
-          <img className="w-32 rounded-md aspect-video object-cover" src={product.thumbnail} alt={product.title} />
+          <img className="rounded-md aspect-video object-cover max-w-xs" src={product.thumbnail} alt={product.title} />
           <RaitingBar value={product.rating} />
         </div>
         <div>
