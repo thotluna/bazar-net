@@ -6,13 +6,33 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Bazar-Net',
+  title: {
+    default: 'Bazar-Net',
+    template: '%s | Bazar-Net'
+  },
   description: 'Your online shop',
   manifest: 'https://bazar-net.vercel.app/manifest',
   openGraph: {
     title: 'Bazar-Net',
+    description: 'You shop online',
     url: `https://bazar-net.vercel.app`,
-    images: ['https://bazar-net.vercel.app/bazar-net.png']
+    siteName: 'Bazar-Net',
+    images: [
+      {
+        url: 'https://bazar-net.vercel.app/bazar-net.png',
+        width: 244,
+        height: 250
+      }
+    ]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Bazar-Net',
+    site: '@Eladiofeijoo',
+    creator: '@Eladiofeijoo',
+    creatorId: '26516048',
+    description: 'Your online shop',
+    images: 'https://bazar-net.vercel.app/bazar-net.png'
   }
 }
 
