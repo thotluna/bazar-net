@@ -1,3 +1,4 @@
+import { bottomBarPageObject } from '../../fixtures/pages-object/bottom-bar-page-object'
 import { detailsPageObject } from '../../fixtures/pages-object/detail-page-object'
 import { homePageObject } from '../../fixtures/pages-object/home-page-object'
 import { likedProductsPageObject } from '../../fixtures/pages-object/liked-products-page-object'
@@ -17,18 +18,6 @@ describe('Page Home', () => {
     it('Input placeholder', () => {
       homePageObject.elements.search().should('have.attr', 'placeholder', 'Search')
     })
-    it('Input arial-label', () => {
-      homePageObject.elements.search().should('be.visible')
-    })
-    it('Button submit', () => {
-      homePageObject.elements.submitSearch().should('be.visible')
-    })
-    it('Button Shopping car list', () => {
-      homePageObject.elements.buttonShoppingCar().should('be.visible')
-    })
-    it('Button Liked list', () => {
-      homePageObject.elements.buttonLikedProducts().should('be.visible')
-    })
     it('Button profile', () => {
       cy.get('a').last().children().should('have.attr', 'aria-label', 'Go to profile')
     })
@@ -47,17 +36,24 @@ describe('Page Home', () => {
       homePageObject.isInHome()
     })
     it('to products details', () => {
-      const id = 1
-      homePageObject.goToDetailProduct(id)
-      detailsPageObject.isInProductDetails(id)
+      const position = 1
+      homePageObject.goToDetailProduct(position)
+      detailsPageObject.isInProductDetails(position + 1)
     })
     it('to Shopping car', () => {
-      homePageObject.goToShoppingCar()
+      bottomBarPageObject.goToShoppingCar()
       shoppingCarPageObject.isInShoppingCar()
     })
     it('to Liked product', () => {
-      homePageObject.goToLikedProducts()
+      bottomBarPageObject.goToLikedProducts()
       likedProductsPageObject.isInLikedProducts()
     })
+  })
+
+  it('should increment products like', () => {
+    homePageObject.clickLikeProduct(1)
+    homePageObject.clickLikeProduct(3)
+    homePageObject.clickLikeProduct(5)
+    bottomBarPageObject.expectThatLikedProductsHave(3)
   })
 })

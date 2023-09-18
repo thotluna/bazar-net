@@ -6,10 +6,10 @@ describe('Result search products', () => {
     cy.visit('/')
   })
   it('should search products', () => {
-    const query = 'iPhone'
+    const query = 'laptop'
     homePageObject.searchProductsWith(query)
     searchProductsPageObject.isInSearchProducts(query)
-    searchProductsPageObject.elements.cards().should('be.visible').should('have.length', 2)
+    searchProductsPageObject.elements.cards().should('be.visible').should('have.length', 3)
   })
   it('should search products do not exist', () => {
     const query = 'asdasdasdsd'

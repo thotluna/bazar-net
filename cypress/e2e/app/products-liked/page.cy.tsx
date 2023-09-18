@@ -1,3 +1,4 @@
+import { bottomBarPageObject } from '../../../fixtures/pages-object/bottom-bar-page-object'
 import { homePageObject } from '../../../fixtures/pages-object/home-page-object'
 import { likedProductsPageObject } from '../../../fixtures/pages-object/liked-products-page-object'
 
@@ -7,7 +8,7 @@ describe('Liked Products list', () => {
     homePageObject.clickLikeProduct(1)
     homePageObject.clickLikeProduct(2)
     homePageObject.clickLikeProduct(3)
-    homePageObject.goToLikedProducts()
+    bottomBarPageObject.goToLikedProducts()
   })
   it('should render 3 card', () => {
     likedProductsPageObject.elements.cards().should('have.length', 3)
