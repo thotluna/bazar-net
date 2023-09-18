@@ -6,13 +6,13 @@ import data from './products.json'
 
 export function TestRepository(): ProductRepository {
   return {
-    getAll: (query?: string | null) => getAll(query),
+    getAll: (query?: string, skip?: number, limit?: number) => getAll(query, skip, limit),
     get: (id: number) => get(id),
     getList: (ids: number[]) => getList(ids)
   }
 }
 
-function getAll(query?: string | null) {
+function getAll(query?: string, skip: number = 0, limit: number = 5) {
   const products = query
     ? data.products
         .filter(
@@ -35,10 +35,10 @@ function getAll(query?: string | null) {
       })
 
   return Promise.resolve({
-    products,
+    products: products.slice(skip, skip + limit),
     total: products.length,
-    skip: 0,
-    limit: 30
+    skip: skip,
+    limit: limit
   }) satisfies Promise<ResultProduct>
 }
 

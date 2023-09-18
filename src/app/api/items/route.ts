@@ -8,12 +8,17 @@ import { TestRepository } from '../../../../__TESTS__/src/modules/items/infrastr
 export async function GET(request: Request): Promise<NextResponse<ResultProduct>> {
   const { searchParams } = new URL(request.url)
 
-  const query: string | null = searchParams.get('q')
+  const query = searchParams.get('q') ?? undefined
+  const skipString = searchParams.get('skip')
+  const limitString = searchParams.get('limit')
+
+  const skip = skipString ? Number(skipString) : undefined
+  const limit = limitString ? Number(limitString) : undefined
 
   const repository: ProductRepository =
     process.env.NODE_ENV === 'development' ? TestRepository() : DummyJsonProductRepository()
 
-  const list = await GetAllItems(repository, query)
+  const list = await GetAllItems(repository, query, skip, limit)
 
   return NextResponse.json(list)
 }

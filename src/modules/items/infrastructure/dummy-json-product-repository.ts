@@ -5,31 +5,45 @@ import { ProductRepository } from '../domain/product-repository'
 import { ResultProduct } from '../domain/result-products'
 import { ResultExternalProduct } from './result-product'
 
-const URL_BASE_API = 'https://dummyjson.com/products'
+const URL_BASE_API = 'https://dummyjson.com'
 
 export function DummyJsonProductRepository(): ProductRepository {
   return {
-    getAll: (query?: string | null) => getAll(query),
+    getAll: (query?: string, skip?: number, limit?: number) => getAll(query, skip, limit),
     get: (id: number) => get(id),
     getList: (ids: number[]) => getList(ids)
   }
 }
 
-const getAll = async (query?: string | null): Promise<ResultProduct> => {
-  const url = query ? `${URL_BASE_API}/search?q=${query}` : URL_BASE_API
+const generateUrl = ({ query, skip = 0, limit = 5 }: { query?: string; skip?: number; limit?: number }) => {
+  const url = new URL('/products', URL_BASE_API)
+  if (query) {
+    url.pathname.concat('/search')
+    url.searchParams.append('q', query)
+  }
+
+  url.searchParams.append('skip', skip.toString())
+  url.searchParams.append('limit', limit.toString())
+  return url
+}
+
+const getAll = async (query?: string, skip: number = 0, limit: number = 5): Promise<ResultProduct> => {
+  const url = generateUrl({ query, skip, limit })
 
   return fetch(url)
     .then((resultRaw) => resultRaw.json())
     .then((result) => {
-      const resutlProduct: ResultExternalProduct = result
+      const resultProduct: ResultExternalProduct = result
       return {
-        ...resutlProduct,
-        products: resutlProduct.products.map((prod) => {
+        ...resultProduct,
+        products: resultProduct.products.map((prod) => {
           return {
             ...prod,
             liked: false
           } satisfies Product
-        })
+        }),
+        skip,
+        limit
       } satisfies ResultProduct
     })
 }
