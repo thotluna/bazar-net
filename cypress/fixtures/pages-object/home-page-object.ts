@@ -1,17 +1,18 @@
 class HomePageObject {
   elements = {
     search: () => cy.get('input[aria-label="Search input"]'),
+
     submitSearch: () => cy.get('button[type="submit"]'),
-    card: (id: number) => cy.get(`[href$="/products/${id}"]`),
-    likeCard: (id: number) => cy.get(`a[href$="/products/${id}"] svg[aria-label^="Like to"]`).parent(),
-    buttonLikedProducts: () => cy.get('a[href^="/products-liked"]'),
-    badgeLikedProducts: () => this.elements.buttonLikedProducts().get('span'),
-    buttonShoppingCar: () => cy.get('a[href^="/shopping-car"]'),
-    badgeShoppingCar: () => this.elements.buttonShoppingCar().get('span')
+
+    card: (position: number) => cy.get(`[href^="/products/"]`).eq(position),
+
+    likeCard: (position: number) => cy.get(`svg[aria-label^="Like to"]`).eq(position)
   }
 
   go() {
+    cy.intercept('/').as('goHome')
     cy.visit('/')
+    cy.wait('@goHome')
   }
   typeSearch(worlds: string) {
     this.elements.search().type(worlds)
@@ -20,21 +21,20 @@ class HomePageObject {
     this.elements.submitSearch().wait(500).click()
   }
   searchProductsWith(query: string) {
+    cy.intercept('/products?q=*').as('search')
     this.typeSearch(query)
     this.searchProducts()
+    cy.wait('@search')
   }
-  goToDetailProduct(id: number) {
-    this.elements.card(id).click()
+  goToDetailProduct(position: number) {
+    cy.intercept('/products/*').as('productId')
+    this.elements.card(position).click()
+    cy.wait('@productId')
   }
-  clickLikeProduct(id: number) {
-    this.elements.likeCard(id).click()
+  clickLikeProduct(position: number) {
+    this.elements.likeCard(position).click()
   }
-  goToLikedProducts() {
-    this.elements.buttonLikedProducts().wait(500).click()
-  }
-  goToShoppingCar() {
-    this.elements.buttonShoppingCar().click()
-  }
+
   isInHome() {
     cy.location().should((location) => {
       expect(location.pathname).to.eq(`/`)

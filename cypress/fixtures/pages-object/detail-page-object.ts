@@ -1,3 +1,5 @@
+import { KEY_SHOPPING_CAR } from '../../../src/modules/shopping-car'
+
 class DetailPageObject {
   elements = {
     rating: () => cy.get('span[aria-label^="rating:"]'),
@@ -7,15 +9,13 @@ class DetailPageObject {
         .get('button img[alt^="Image #"]')
         .parent()
         .eq(position - 1),
-    buttonNextImageCarrousel: () => cy.get('[aria-label="next image"]'),
-    buttonBackImageCarrousel: () => cy.get('[aria-label="back image"]'),
+    buttonNextImageCarrousel: () => cy.get('[aria-label="next image"]').parent(),
+    buttonBackImageCarrousel: () => cy.get('[aria-label="back image"]').parent(),
     title: () => cy.get('h1'),
     description: () => cy.get('p'),
     total: () => cy.get('span[aria-label="total"]'),
     likeButton: () => cy.get('[aria-label="Like this product"]').parent(),
 
-    buttonSubtractProduct: () => cy.get('[aria-label="subtract product"]').parent(),
-    buttonAddProduct: () => cy.get('[aria-label="add product"]').parent(),
     homeLink: () => cy.get('a[href:"/"]')
   }
 
@@ -27,15 +27,26 @@ class DetailPageObject {
     this.elements.buttonBackImageCarrousel().wait(500).click()
   }
 
-  addElement() {
-    this.elements.buttonAddProduct().click()
-  }
-  subElement() {
-    this.elements.buttonSubtractProduct().click()
-  }
-
   goToDetailProduct(id: number) {
     cy.visit(`/products/${id}`)
+  }
+
+  clickedTheImageCarrousel(position: number) {
+    detailsPageObject.elements.imageCarrousel(position).wait(1000).click()
+  }
+
+  expectThaHaveBorderTheImageCarrousel(position: number) {
+    this.elements.imageCarrousel(position).should('have.class', 'border-[var(--color-carrousel-border)]')
+  }
+
+  expectThatLocalStorageHave(quantity: number) {
+    cy.location().should(() => {
+      expect(localStorage.getItem(KEY_SHOPPING_CAR)).to.equal(`{"1":${quantity}}`)
+    })
+  }
+
+  expectThatImagePrincipalHave(src: string) {
+    this.elements.imagePrincipal().should('have.attr', 'src', src)
   }
 
   isInProductDetails(id: number) {
