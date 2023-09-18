@@ -9,7 +9,7 @@ import { ResultProductMother } from '../../modules/products/infrastructure/resul
 jest.mock('../../../../src/modules/items/infrastructure/dummy-json-product-repository.ts')
 
 describe('Api', () => {
-  const baseUrl = 'http://localhost:3000/api/items'
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL
   describe('GetAllProducts', () => {
     it('Should return status 200 ', async () => {
       const getAll = jest.fn().mockResolvedValue(ResultProductMother.create(5))

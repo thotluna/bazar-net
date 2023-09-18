@@ -10,7 +10,7 @@ import { productMother } from '../../../modules/products/infrastructure/result-p
 jest.mock('../../../../../src/modules/items/infrastructure/dummy-json-product-repository.ts')
 
 describe('Api Group Id', () => {
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3000/api'
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL
   it('should return status 200 and list of items', async () => {
     const ids = [1, 3]
     const productsFaker = productMother.createList(2)
@@ -54,14 +54,6 @@ describe('Api Group Id', () => {
     expect(res.status).toBe(404)
     expect(getList).toHaveBeenCalledTimes(0)
     expect(message).toEqual({ error: `id: ${ids[0]} should be number` })
-    // const expected = [
-    //   {
-    //     error: {
-    //       message: 'id = 0 does not exist',
-    //       name: 'ValidationError'
-    //     }
-    //   }
-    // ]
   })
 
   it('should return error for each id fail when id do not exist ', async () => {

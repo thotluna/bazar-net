@@ -9,7 +9,7 @@ import { productMother } from '../../../modules/products/infrastructure/result-p
 jest.mock('../../../../../src/modules/items/infrastructure/dummy-json-product-repository.ts')
 
 describe('items/id', () => {
-  const baseUrl = 'http://localhost:3000/api/items'
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL
 
   it('should return one item', async () => {
     const id = 1
@@ -29,7 +29,7 @@ describe('items/id', () => {
   })
 
   it('should return status 404', async () => {
-    const id = 'asdasd'
+    const id = 'anything '
 
     const get = jest.fn()
     ;(DummyJsonProductRepository as jest.Mock).mockReturnValue({
@@ -54,10 +54,10 @@ describe('items/id', () => {
 
     const require = new Request(`${baseUrl}/${id}`)
     const res = await GET(require)
-    const errorMesage = await res.json()
+    const errorMessage = await res.json()
 
     expect(res.status).toBe(404)
-    expect(errorMesage.error).toEqual(`id = ${id} does not exist`)
+    expect(errorMessage.error).toEqual(`id = ${id} does not exist`)
     expect(get).toHaveBeenCalledTimes(1)
   })
 })
