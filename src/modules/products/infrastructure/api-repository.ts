@@ -12,7 +12,9 @@ export const ApiProductRepository: ProductRepository = {
 
 const getAllProducts = (query?: string) => {
   const q = query ? `?q=${query}` : ''
-  const resultProduct = fetch(`${API_URL_BASE}/items${q}`).then((data) => data.json())
+  const resultProduct = fetch(`${API_URL_BASE}/items${q}`, {
+    next: { revalidate: 60 } // Revalidate every 60 seconds
+  }).then((data) => data.json())
 
   return resultProduct satisfies Promise<ResultProduct>
 }
