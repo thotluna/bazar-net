@@ -3,6 +3,7 @@ import { GetItem } from '@/modules/items/application/get-item'
 import { GetItemsGroup } from '@/modules/items/application/get-items-group'
 import { ProductRepository } from '@/modules/items/domain/product-repository'
 import { DummyJsonProductRepository } from '@/modules/items/infrastructure/dummy-json-product-repository'
+import { TestRepository } from '../../../../../__TESTS__/src/modules/items/infrastructure/test-repository'
 
 export async function GET(request: Request) {
   const params = new URL(request.url).searchParams
@@ -13,7 +14,8 @@ export async function GET(request: Request) {
 
   const id = idOrIDs === 'group-id' ? undefined : Number(idOrIDs)
 
-  const repository: ProductRepository = DummyJsonProductRepository()
+  const repository: ProductRepository =
+    process.env.NODE_ENV === 'development' ? TestRepository() : DummyJsonProductRepository()
   try {
     const products = ids ? await GetItemsGroup(repository, ids) : await GetItem(repository, id!)
     return new Response(JSON.stringify(products), {
