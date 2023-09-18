@@ -3,7 +3,7 @@ import { ValidationError } from '@/modules/core/error-validation'
 import { Product } from '../domain/product'
 import { ProductRepository } from '../domain/product-repository'
 import { ResultProduct } from '../domain/result-products'
-import { ResultexternalProduct } from './result-product'
+import { ResultExternalProduct } from './result-product'
 
 const URL_BASE_API = 'https://dummyjson.com/products'
 
@@ -21,7 +21,7 @@ const getAll = async (query?: string | null): Promise<ResultProduct> => {
   return fetch(url)
     .then((resultRaw) => resultRaw.json())
     .then((result) => {
-      const resutlProduct: ResultexternalProduct = result
+      const resutlProduct: ResultExternalProduct = result
       return {
         ...resutlProduct,
         products: resutlProduct.products.map((prod) => {
@@ -30,7 +30,7 @@ const getAll = async (query?: string | null): Promise<ResultProduct> => {
             liked: false
           } satisfies Product
         })
-      }
+      } satisfies ResultProduct
     })
 }
 

@@ -12,7 +12,7 @@ export type ProductExternalDto = {
   images: string[]
 }
 
-export type ResultexternalProduct = {
+export type ResultExternalProduct = {
   products: ProductExternalDto[]
   total: number
   skip: number
