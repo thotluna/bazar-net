@@ -18,8 +18,8 @@ export function LikedButton() {
 
   return (
     <LinkButton href={url}>
-      <Badge amount={likes.length ?? 0} dataCy="Liked-Badge" />
       <LikeIcon label="Go to Likes products list" />
+      <Badge amount={likes.length ?? 0} dataCy="Liked-Badge" />
     </LinkButton>
   )
 }

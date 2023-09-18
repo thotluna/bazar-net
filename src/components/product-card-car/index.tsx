@@ -16,9 +16,13 @@ export function ProductCardCar({ product }: { product: ProductToCar }) {
           <h2 className="text-lg sm:text-2xl font-semibold text-[var(--color-card-text)]">
             {format.format(product.unit.total)}
           </h2>
-          <div className="flex flex-wrap">
-            <span className="text-sm text-(var(--color-price-rebate))">price: {format.format(product.unit.price)}</span>
-            <span className="text-sm text-(var(--color-price-rebate))">saved: {format.format(product.unit.saved)}</span>
+          <div className="flex flex-wrap gap-2 items-center justify-center">
+            <span className="text-sm text-(var(--color-price-rebate))">
+              price: <span className="font-semibold">{format.format(product.unit.price)}</span>
+            </span>
+            <span className="text-sm text-(var(--color-price-rebate))">
+              saved: <span className="font-semibold">{format.format(product.unit.saved)}</span>
+            </span>
           </div>
         </div>
         <ButtonShopping available={product.stock} id={product.id} />

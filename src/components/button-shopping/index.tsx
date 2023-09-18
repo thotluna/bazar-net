@@ -20,7 +20,7 @@ export function ButtonShopping({ id, available }: { id: number; available: numbe
   }
 
   return (
-    <article className="min-w-max flex flex-col items-center gap-1">
+    <article data-cy="quantity-products" className="min-w-max flex flex-col items-center gap-1">
       <h3 className="text-xs text-[var(--color-card-text)] sm:text-sm collapse sm:visible font-semibold">
         Product in shopping card:
       </h3>
@@ -29,7 +29,6 @@ export function ButtonShopping({ id, available }: { id: number; available: numbe
           <ArrowBack label="subtract product" />
         </button>
         <span
-          arial-label="number of products added to cart"
           className="flex-1 w-full text-center font-semibold text-lg text-[var(--color-gray-light)] sm:text-2xl"
           suppressHydrationWarning={true}
         >

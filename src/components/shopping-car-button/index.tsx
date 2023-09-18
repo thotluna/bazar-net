@@ -24,8 +24,8 @@ export function ShoppingCarButton() {
 
   return (
     <LinkButton href={`/shopping-car?car=${objBase64(counts ?? {})}`}>
-      <Badge amount={total} />
       <ShoppingCardIcon />
+      <Badge amount={total} />
     </LinkButton>
   )
 }
