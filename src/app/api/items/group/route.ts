@@ -1,11 +1,11 @@
 import { GetItemsGroup } from '@/modules/items/application/get-items-group'
 import { ProductRepository } from '@/modules/items/domain/product-repository'
 import { DummyJsonProductRepository } from '@/modules/items/infrastructure/dummy-json-product-repository'
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 import { TestRepository } from '../../../../../__TESTS__/src/modules/items/infrastructure/test-repository'
 
-export async function GET(request: NextRequest) {
-  const searchParams = request.nextUrl.searchParams
+export async function GET(request: Request) {
+  const searchParams = new URL(request.url).searchParams
   const ids = searchParams.getAll('id')
 
   const repository: ProductRepository =
