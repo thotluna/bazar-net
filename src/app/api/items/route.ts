@@ -5,8 +5,8 @@ import { DummyJsonProductRepository } from '@/modules/items/infrastructure/dummy
 import { NextResponse } from 'next/server'
 import { TestRepository } from '../../../../__TESTS__/src/modules/items/infrastructure/test-repository'
 
-export async function GET(request: Request): Promise<NextResponse<ResultProduct>> {
-  const { searchParams } = new URL(request.url)
+export async function GET(req: Request): Promise<NextResponse<ResultProduct>> {
+  const { searchParams } = new URL(req.url!)
 
   const query = searchParams.get('q') ?? undefined
   const skipString = searchParams.get('skip')

@@ -20,16 +20,17 @@ const getAllProducts = (query?: string) => {
 }
 
 const getListByIds = (ids: number[]): Promise<Product[]> => {
-  let url = `${API_URL_BASE}/items/group-id?`
-  ids.forEach((id, index) => {
-    url += `ids=${id}`
-    if (index < ids.length - 1) {
-      url += '&'
-    }
+  let url = new URL('/api/items/group', API_URL_BASE)
+
+  ids.forEach((id) => {
+    url.searchParams.append('id', id.toString())
   })
+
   return fetch(url).then((data) => data.json())
 }
 
 const get = (id: number): Promise<Product> => {
-  return fetch(`${API_URL_BASE}/items/${id}`).then((res) => res.json())
+  let url = new URL(`/api/items/unit/${id}`, API_URL_BASE)
+
+  return fetch(url).then((res) => res.json())
 }

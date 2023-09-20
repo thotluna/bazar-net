@@ -15,7 +15,7 @@ export function DummyJsonProductRepository(): ProductRepository {
   }
 }
 
-const generateUrl = ({ query, skip = 0, limit = 5 }: { query?: string; skip?: number; limit?: number }) => {
+const generateUrl = ({ query, skip, limit }: { query?: string; skip: number; limit: number }) => {
   const url = new URL('/products', URL_BASE_API)
   if (query) {
     url.pathname.concat('/search')
@@ -27,7 +27,7 @@ const generateUrl = ({ query, skip = 0, limit = 5 }: { query?: string; skip?: nu
   return url
 }
 
-const getAll = async (query?: string, skip: number = 0, limit: number = 5): Promise<ResultProduct> => {
+const getAll = async (query?: string, skip: number = 0, limit: number = 10): Promise<ResultProduct> => {
   const url = generateUrl({ query, skip, limit })
 
   return fetch(url)
@@ -42,8 +42,8 @@ const getAll = async (query?: string, skip: number = 0, limit: number = 5): Prom
             liked: false
           } satisfies Product
         }),
-        skip,
-        limit
+        skip: skip,
+        limit: skip
       } satisfies ResultProduct
     })
 }
@@ -51,10 +51,11 @@ const getAll = async (query?: string, skip: number = 0, limit: number = 5): Prom
 const get = async (id: number): Promise<Product | ErrorMessage> => {
   if (isNaN(Number(id))) throw new ValidationError(`id should be number`)
 
-  return fetch(`${URL_BASE_API}/${id}`)
+  return fetch(`${URL_BASE_API}/products/${id}`)
     .then((resultRaw) => resultRaw.json())
     .then((result) => {
       if (result.message) throw new ValidationError(`id = ${id} does not exist`)
+
       const product: Product = { ...result, liked: false }
 
       return product
@@ -62,7 +63,11 @@ const get = async (id: number): Promise<Product | ErrorMessage> => {
 }
 
 const getList = async (ids: number[]): Promise<(Product | ErrorMessage)[]> => {
-  const promises = ids.map((id) => get(id))
+  const promises = ids.map((id) =>
+    fetch(`${URL_BASE_API}/products/${id}`)
+      .then((raw) => raw.json())
+      .then((pro) => (pro.message ? pro : { ...pro, liked: false }))
+  )
 
   return Promise.allSettled([...promises]).then((result) =>
     result.map((res) => (res.status === 'fulfilled' ? res.value : { error: res.reason as string }))
