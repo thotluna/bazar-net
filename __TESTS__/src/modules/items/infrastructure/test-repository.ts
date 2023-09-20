@@ -1,3 +1,4 @@
+import { ErrorMessage } from '@/modules/core/error-message'
 import { ValidationError } from '@/modules/core/error-validation'
 import { Product } from '@/modules/items/domain/product'
 import { ProductRepository } from '@/modules/items/domain/product-repository'
@@ -51,10 +52,17 @@ function get(id: number) {
   return Promise.resolve(product)
 }
 
-function getList(ids: number[]) {
-  const promises = ids.map((id) => get(id))
+function getList(ids: number[]): Promise<(Product | ErrorMessage)[]> {
+  const promises = ids.map((id) => {
+    const product = data.products.find((pro) => pro.id === id)
+    if (!product) return Promise.reject({ message: `Product with id '${id}' not found` })
+
+    return Promise.resolve({ ...product, liked: false } satisfies Product)
+  })
 
   return Promise.allSettled([...promises]).then((result) =>
-    result.map((res) => (res.status === 'fulfilled' ? res.value : { error: res.reason as string }))
+    result.map((res) =>
+      res.status === 'fulfilled' ? res.value : ({ message: res.reason as string } satisfies ErrorMessage)
+    )
   )
 }

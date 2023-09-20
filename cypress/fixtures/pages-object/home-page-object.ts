@@ -32,7 +32,9 @@ class HomePageObject {
     cy.wait('@productId')
   }
   clickLikeProduct(position: number) {
+    // cy.intercept('/api/items/group?id=?').as('groupId')
     this.elements.likeCard(position).click()
+    // cy.wait('@groupId')
   }
 
   isInHome() {

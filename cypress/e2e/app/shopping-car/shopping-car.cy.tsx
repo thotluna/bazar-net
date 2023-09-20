@@ -6,7 +6,7 @@ import { shoppingCarPageObject } from '../../../fixtures/pages-object/shopping-c
 
 const idProduct = 1
 
-const product: Promise<Product> = fetch(`http://localhost:3000/api/items/${idProduct}`).then((res) =>
+const product: Promise<Product> = fetch(`http://localhost:3000/api/items/unit/${idProduct}`).then((res) =>
   res.json()
 ) satisfies Promise<Product>
 

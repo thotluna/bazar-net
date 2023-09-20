@@ -52,8 +52,8 @@ describe('Page Home', () => {
 
   it('should increment products like', () => {
     homePageObject.clickLikeProduct(1)
+    homePageObject.clickLikeProduct(2)
     homePageObject.clickLikeProduct(3)
-    homePageObject.clickLikeProduct(5)
     bottomBarPageObject.expectThatLikedProductsHave(3)
   })
 })

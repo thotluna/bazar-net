@@ -7,7 +7,7 @@ const imageFactory = Factory.define<string>(() => faker.image.urlLoremFlickr())
 
 const ImageMother = {
   createList: () => {
-    const count = Math.ceil(Math.random() * 10)
+    const count = Math.ceil(Math.random() * (10 - 2) + 2)
     return imageFactory.buildList(count)
   }
 }

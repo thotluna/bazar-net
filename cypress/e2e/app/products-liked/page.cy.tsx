@@ -14,7 +14,9 @@ describe('Liked Products list', () => {
     likedProductsPageObject.elements.cards().should('have.length', 3)
   })
   it('should remove 1 card', () => {
+    cy.intercept('/api/items/group?id=3&id=4').as('saveNewList')
     homePageObject.clickLikeProduct(1)
+    cy.wait('@saveNewList')
     likedProductsPageObject.elements.cards().should('have.length', 2)
   })
   it('should remove all card', () => {
