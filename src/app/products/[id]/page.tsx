@@ -25,6 +25,9 @@ export async function generateMetadata({ params }: Props, parent: ResolvingMetad
   return {
     title: product.title,
     description: product.description,
+    alternates: {
+      canonical: `/products/${id}`
+    },
     openGraph: {
       title: product.title,
       url: `https://bazar-net.vercel.app/products/${id}`,
