@@ -16,7 +16,7 @@ export function DummyJsonProductRepository(): ProductRepository {
 }
 
 const generateUrl = ({ query, skip, limit }: { query?: string; skip: number; limit: number }) => {
-  const url = new URL('/products', URL_BASE_API)
+  const url = new URL('/products/search', URL_BASE_API)
   if (query) {
     url.pathname.concat('/search')
     url.searchParams.append('q', query)
@@ -29,6 +29,9 @@ const generateUrl = ({ query, skip, limit }: { query?: string; skip: number; lim
 
 const getAll = async (query?: string, skip: number = 0, limit: number = 10): Promise<ResultProduct> => {
   const url = generateUrl({ query, skip, limit })
+
+  // eslint-disable-next-line no-console
+  console.log({ url, query })
 
   return fetch(url)
     .then((resultRaw) => resultRaw.json())

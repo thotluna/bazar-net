@@ -11,10 +11,12 @@ export const ApiProductRepository: ProductRepository = {
 }
 
 const getAllProducts = (query?: string) => {
-  const q = query ? `?q=${query}` : ''
-  const resultProduct = fetch(`${API_URL_BASE}/items${q}`, {
-    next: { revalidate: 60 } // Revalidate every 60 seconds
-  }).then((data) => data.json())
+  const url = new URL('/api/items', API_URL_BASE)
+  if (query) {
+    url.searchParams.append('q', query)
+  }
+
+  const resultProduct = fetch(url).then((data) => data.json())
 
   return resultProduct satisfies Promise<ResultProduct>
 }
