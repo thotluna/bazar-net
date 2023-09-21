@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 'use client'
 import { useLikeStore } from '@/store/liked'
 import dynamic from 'next/dynamic'
