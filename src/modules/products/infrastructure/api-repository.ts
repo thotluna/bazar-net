@@ -4,22 +4,24 @@ import { ProductRepository } from '../domain'
 
 const API_URL_BASE = process.env.NEXT_PUBLIC_API_URL
 const SKIP_INITIAL = 0
-const LIMIT_DEFAULT = 15
+export const LIMIT_DEFAULT = 15
 
 export const ApiProductRepository: ProductRepository = {
-  getAllProducts: (query?: string, skip?: number, limit?: number) => getAllProducts(query, skip, limit),
+  getAllProducts: (page: number, query?: string) => getAllProducts(page, query),
   getListByIds: (ids: number[]) => getListByIds(ids),
   get: (id: number) => get(id)
 }
 
-const getAllProducts = (query?: string, skip?: number, limit?: number) => {
+const getAllProducts = (page: number, query?: string) => {
   const url = new URL('/api/items', API_URL_BASE)
   if (query) {
     url.searchParams.append('q', query)
   }
 
+  const skip = (page - 1) * LIMIT_DEFAULT
+
   url.searchParams.append('skip', `${skip ?? SKIP_INITIAL}`)
-  url.searchParams.append('limit', `${limit ?? LIMIT_DEFAULT}`)
+  url.searchParams.append('limit', `${LIMIT_DEFAULT}`)
 
   const resultProduct = fetch(url).then((data) => data.json())
 

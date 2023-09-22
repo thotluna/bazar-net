@@ -42,17 +42,17 @@ export const productMother = {
 
 export const ResultProductMother = {
   create: (countProduct: number, partial?: Partial<ResultProduct>) => {
-    const resutl = {
+    const result = {
       products: productMother.createList(countProduct),
       limit: countProduct,
       skip: 0,
       total: 100
     } satisfies ResultProduct
 
-    if (!partial) return resutl
+    if (!partial) return result
 
     return {
-      ...resutl,
+      ...result,
       ...partial
     } satisfies ResultProduct
   }

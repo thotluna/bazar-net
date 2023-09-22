@@ -6,7 +6,7 @@ import { ApiProductRepository } from '@/modules/products/infrastructure/api-repo
 
 async function getAllProduct(query?: string) {
   const repository: ProductRepository = ApiProductRepository
-  return GetAllProducts(repository, query)
+  return GetAllProducts(repository, { query })
 }
 
 export default async function Home() {
