@@ -1,6 +1,6 @@
 import { Product } from './product'
 
-export type ResultProduct = {
+export type ResultItems = {
   products: Product[]
   total: number
   skip: number

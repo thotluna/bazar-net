@@ -2,7 +2,7 @@ import { ErrorMessage } from '@/modules/core/error-message'
 import { ValidationError } from '@/modules/core/error-validation'
 import { Product } from '@/modules/items/domain/product'
 import { ProductRepository } from '@/modules/items/domain/product-repository'
-import { ResultProduct } from '@/modules/items/domain/result-products'
+import { ResultItems } from '@/modules/items/domain/result-products'
 import data from './products.json'
 
 export function TestRepository(): ProductRepository {
@@ -40,7 +40,7 @@ function getAll(query?: string, skip: number = 0, limit: number = 5) {
     total: products.length,
     skip: skip,
     limit: limit
-  }) satisfies Promise<ResultProduct>
+  }) satisfies Promise<ResultItems>
 }
 
 function get(id: number) {

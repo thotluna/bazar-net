@@ -1,11 +1,11 @@
 import { GetAllItems } from '@/modules/items/application/get-all-items'
 import { ProductRepository } from '@/modules/items/domain/product-repository'
-import { ResultProduct } from '@/modules/items/domain/result-products'
+import { ResultItems } from '@/modules/items/domain/result-products'
 import { DummyJsonProductRepository } from '@/modules/items/infrastructure/dummy-json-product-repository'
 import { NextResponse } from 'next/server'
 import { TestRepository } from '../../../../__TESTS__/src/modules/items/infrastructure/test-repository'
 
-export async function GET(req: Request): Promise<NextResponse<ResultProduct>> {
+export async function GET(req: Request): Promise<NextResponse<ResultItems>> {
   const { searchParams } = new URL(req.url!)
 
   const query = searchParams.get('q') ?? undefined

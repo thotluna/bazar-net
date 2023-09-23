@@ -2,7 +2,7 @@ import { ErrorMessage } from '@/modules/core/error-message'
 import { ValidationError } from '@/modules/core/error-validation'
 import { Product } from '../domain/product'
 import { ProductRepository } from '../domain/product-repository'
-import { ResultProduct } from '../domain/result-products'
+import { ResultItems } from '../domain/result-products'
 import { ResultExternalProduct } from './result-product'
 
 const URL_BASE_API = 'https://dummyjson.com'
@@ -28,7 +28,7 @@ const generateUrl = ({ query, skip, limit }: { query?: string; skip: number; lim
   return url
 }
 
-const getAll = async (query?: string, skip: number = 0, limit: number = 10): Promise<ResultProduct> => {
+const getAll = async (query?: string, skip: number = 0, limit: number = 10): Promise<ResultItems> => {
   const url = generateUrl({ query, skip, limit })
 
   return fetch(url)
@@ -45,7 +45,7 @@ const getAll = async (query?: string, skip: number = 0, limit: number = 10): Pro
         }),
         skip: skip,
         limit: skip
-      } satisfies ResultProduct
+      } satisfies ResultItems
     })
 }
 

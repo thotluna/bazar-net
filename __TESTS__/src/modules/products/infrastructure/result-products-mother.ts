@@ -1,5 +1,5 @@
 import { Product } from '@/modules/items/domain/product'
-import { ResultProduct } from '@/modules/items/domain/result-products'
+import { ResultItems } from '@/modules/items/domain/result-products'
 import { faker } from '@faker-js/faker'
 import { Factory } from 'fishery'
 
@@ -41,19 +41,19 @@ export const productMother = {
 }
 
 export const ResultProductMother = {
-  create: (countProduct: number, partial?: Partial<ResultProduct>) => {
+  create: (countProduct: number, partial?: Partial<ResultItems>) => {
     const result = {
       products: productMother.createList(countProduct),
       limit: countProduct,
       skip: 0,
       total: 100
-    } satisfies ResultProduct
+    } satisfies ResultItems
 
     if (!partial) return result
 
     return {
       ...result,
       ...partial
-    } satisfies ResultProduct
+    } satisfies ResultItems
   }
 }

@@ -5,7 +5,7 @@
 
 import { expect } from '@jest/globals'
 import { GET } from '../../../../src/app/api/items/route'
-import { ResultProduct } from '../../../../src/modules/items/domain/result-products'
+import { ResultItems } from '../../../../src/modules/items/domain/result-products'
 import { DummyJsonProductRepository } from '../../../../src/modules/items/infrastructure/dummy-json-product-repository'
 import { ResultProductMother } from '../../modules/products/infrastructure/result-products-mother'
 
@@ -24,7 +24,7 @@ describe('Items', () => {
       const require = new Request(url)
       const res = await GET(require)
       const status = res.status
-      const resultProduct: ResultProduct = await res.json()
+      const resultProduct: ResultItems = await res.json()
 
       expect(status).toBe(200)
       expect(resultProduct.products.length).toBe(5)
@@ -46,7 +46,7 @@ describe('Items', () => {
       const require = new Request(url)
       const res = await GET(require)
       const status = res.status
-      const resultProduct: ResultProduct = await res.json()
+      const resultProduct: ResultItems = await res.json()
 
       expect(status).toBe(200)
       expect(resultProduct.total).toBe(100)
@@ -65,7 +65,7 @@ describe('Items', () => {
       const require = new Request(url)
       const res = await GET(require)
       const status = res.status
-      const resultProduct: ResultProduct = await res.json()
+      const resultProduct: ResultItems = await res.json()
 
       expect(status).toBe(200)
       expect(resultProduct.total).toBe(100)
@@ -88,7 +88,7 @@ describe('Items', () => {
       const require = new Request(url)
       const res = await GET(require)
       const status = res.status
-      const resultProduct: ResultProduct = await res.json()
+      const resultProduct: ResultItems = await res.json()
 
       expect(status).toBe(200)
       expect(resultProduct.total).toBe(100)
@@ -108,7 +108,7 @@ describe('Items', () => {
       const require = new Request(url)
       const res = await GET(require)
       const status = res.status
-      const resultProduct: ResultProduct = await res.json()
+      const resultProduct: ResultItems = await res.json()
 
       expect(status).toBe(200)
       expect(resultProduct.total).toBe(100)
