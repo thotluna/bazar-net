@@ -1,8 +1,8 @@
 import { Product } from '@/modules/items/domain/product'
-import { ResultProduct } from '@/modules/items/domain/result-products'
+import { ResultProducts } from './result-products'
 
 export interface ProductRepository {
-  getAllProducts: (page: number, query?: string) => Promise<ResultProduct>
+  getAllProducts: (page: number, query?: string) => Promise<ResultProducts>
   getListByIds: (ids: number[]) => Promise<Product[]>
   get: (id: number) => Promise<Product>
 }

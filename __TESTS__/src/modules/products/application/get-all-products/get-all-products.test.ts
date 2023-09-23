@@ -12,26 +12,26 @@ describe('Get all products', () => {
   describe('without query', () => {
     global.fetch = jest.fn(() =>
       Promise.resolve({
-        json: () => Promise.resolve(ResultProductMother.create(15))
+        json: () => Promise.resolve(ResultProductMother.create(LIMIT_DEFAULT))
       })
     ) as jest.Mock
     it('should return 15 products without filters', async () => {
       const repository: ProductRepository = ApiProductRepository
       const res = await GetAllProducts(repository, {})
 
-      expect(res.skip).toBe(0)
-      expect(res.limit).toBe(15)
-      expect(res.products.length).toBe(15)
+      expect(res.page).toBe(1)
+      expect(res.products.length).toBe(LIMIT_DEFAULT)
     })
     it('should return 5 products ', async () => {
       const repository: ProductRepository = ApiProductRepository
 
       const res = await GetAllProducts(repository, {})
-      expect(res.products.length).toBe(15)
+      expect(res.products.length).toBe(LIMIT_DEFAULT)
 
       const page = 2
       const res2 = await GetAllProducts(repository, { page })
-      expect(res2.products.length).toBe(15)
+      expect(res2.products.length).toBe(LIMIT_DEFAULT)
+      expect(res2.page).toBe(page)
 
       expect(res.products).not.toBe(res2.products)
     })
@@ -47,8 +47,7 @@ describe('Get all products', () => {
       const query = 'laptop'
       const res = await GetAllProducts(repository, { query })
 
-      expect(res.skip).toBe(0)
-      expect(res.limit).toBe(15)
+      expect(res.page).toBe(1)
       expect(res.products.length).toBe(3)
     })
     it('should return all laptop products', async () => {
@@ -62,8 +61,7 @@ describe('Get all products', () => {
       const page = 2
       const res = await GetAllProducts(repository, { page, query })
 
-      expect(res.skip).toBe(15)
-      expect(res.limit).toBe(15)
+      expect(res.page).toBe(page)
       expect(res.products.length).toBe(0)
     })
   })

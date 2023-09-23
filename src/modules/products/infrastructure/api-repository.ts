@@ -1,10 +1,10 @@
 import { Product } from '@/modules/items/domain/product'
-import { ResultProduct } from '@/modules/items/domain/result-products'
 import { ProductRepository } from '../domain'
+import { ResultProducts } from '../domain/result-products'
 
 const API_URL_BASE = process.env.NEXT_PUBLIC_API_URL
 const SKIP_INITIAL = 0
-export const LIMIT_DEFAULT = 15
+export const LIMIT_DEFAULT = 5
 
 export const ApiProductRepository: ProductRepository = {
   getAllProducts: (page: number, query?: string) => getAllProducts(page, query),
@@ -23,9 +23,17 @@ const getAllProducts = (page: number, query?: string) => {
   url.searchParams.append('skip', `${skip ?? SKIP_INITIAL}`)
   url.searchParams.append('limit', `${LIMIT_DEFAULT}`)
 
-  const resultProduct = fetch(url).then((data) => data.json())
+  const resultProduct = fetch(url)
+    .then((data) => data.json())
+    .then((resultItems) => {
+      return {
+        products: resultItems.products,
+        page,
+        total: resultItems.total
+      } satisfies ResultProducts
+    })
 
-  return resultProduct satisfies Promise<ResultProduct>
+  return resultProduct satisfies Promise<ResultProducts>
 }
 
 const getListByIds = (ids: number[]): Promise<Product[]> => {
