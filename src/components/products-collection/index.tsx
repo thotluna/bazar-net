@@ -10,19 +10,20 @@ interface Props {
   products: Product[]
   pageOrigin: number
   total: number
+  query?: string
 }
 
-export function ProductCollection({ products, total, pageOrigin }: Props) {
+export function ProductCollection({ products, total, pageOrigin, query }: Props) {
   const [list, setList] = useState(products)
   const { isObserver, fromRef } = useInterceptionObserver()
   const { page } = usePagination(pageOrigin, total, isObserver)
 
   useEffect(() => {
     if (page <= pageOrigin) return
-    getProductAction({ page }).then((result) => {
+    getProductAction({ page, query }).then((result) => {
       setList((prevList) => prevList.concat(result.products))
     })
-  }, [page, pageOrigin])
+  }, [page, pageOrigin, query])
 
   if (total === 0) return
   return (

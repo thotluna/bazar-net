@@ -58,7 +58,7 @@ describe('Page Home', () => {
   })
 
   describe('infinite scroll', () => {
-    it.only('should call in bottom page', () => {
+    it('should call in bottom page', () => {
       cy.intercept('/products/*').as('callApi')
       cy.window().scrollTo('bottom')
       cy.wait('@callApi')

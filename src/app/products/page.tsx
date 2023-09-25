@@ -1,17 +1,10 @@
+import { getProductAction } from '@/actions/get-products'
 import { EmptyProducts } from '@/components/empty-products'
 import { ProductCollection } from '@/components/products-collection'
-import { GetAllProducts } from '@/modules/products/application/get-all-products'
-import { ProductRepository } from '@/modules/products/domain'
-import { ApiProductRepository } from '@/modules/products/infrastructure/api-repository'
-
-async function getAllProductWithQuery(query: string) {
-  const repository: ProductRepository = ApiProductRepository
-  return GetAllProducts(repository, { query })
-}
 
 export default async function Products({ searchParams }: { searchParams?: { [key: string]: string | undefined } }) {
   const query = searchParams?.q
-  const resultProduct = await getAllProductWithQuery(query!)
+  const resultProduct = await getProductAction({ query })
 
   if (resultProduct.products.length === 0) return <EmptyProducts message="Do not have product" />
 
@@ -21,6 +14,7 @@ export default async function Products({ searchParams }: { searchParams?: { [key
         products={resultProduct.products}
         pageOrigin={resultProduct.page}
         total={resultProduct.total}
+        query={query}
       />
     </section>
   )
