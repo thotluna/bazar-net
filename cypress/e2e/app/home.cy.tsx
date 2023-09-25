@@ -56,4 +56,14 @@ describe('Page Home', () => {
     homePageObject.clickLikeProduct(3)
     bottomBarPageObject.expectThatLikedProductsHave(3)
   })
+
+  describe('infinite scroll', () => {
+    it.only('should call in bottom page', () => {
+      cy.intercept('/products/*').as('callApi')
+      cy.window().scrollTo('bottom')
+      cy.wait('@callApi') 
+      cy.window().scrollTo('bottom')
+      cy.wait('@callApi') 
+    })
+  })
 })

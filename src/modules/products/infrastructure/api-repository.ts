@@ -4,7 +4,7 @@ import { ResultProducts } from '../domain/result-products'
 
 const API_URL_BASE = process.env.NEXT_PUBLIC_API_URL
 const SKIP_INITIAL = 0
-export const LIMIT_DEFAULT = 5
+export const LIMIT_DEFAULT = 10
 
 export const ApiProductRepository: ProductRepository = {
   getAllProducts: (page: number, query?: string) => getAllProducts(page, query),
