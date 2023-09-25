@@ -61,9 +61,9 @@ describe('Page Home', () => {
     it.only('should call in bottom page', () => {
       cy.intercept('/products/*').as('callApi')
       cy.window().scrollTo('bottom')
-      cy.wait('@callApi') 
+      cy.wait('@callApi')
       cy.window().scrollTo('bottom')
-      cy.wait('@callApi') 
+      cy.wait('@callApi')
     })
   })
 })
