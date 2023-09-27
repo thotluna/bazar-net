@@ -13,7 +13,7 @@ describe('Page Home', () => {
       cy.title().should('eq', 'Bazar-Net')
     })
     it('Principal Heading', () => {
-      cy.get('header h2').should('have.text', 'BAZAR-NET')
+      cy.get('header h1').should('have.text', 'BAZAR-NET')
     })
     it('Input placeholder', () => {
       homePageObject.elements.search().should('have.attr', 'placeholder', 'Search')

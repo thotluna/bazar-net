@@ -29,9 +29,6 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Bazar-Net',
-    site: '@Eladiofeijoo',
-    creator: '@Eladiofeijoo',
-    creatorId: '26516048',
     description: 'Your online shop',
     images: 'https://bazar-net.vercel.app/bazar-net.png'
   }
