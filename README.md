@@ -1,34 +1,60 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<p align="center">
+  <a href="https://bazar-net.vercel.app/">
+       <img src="https://github.com/thotluna/Reading-Bookshop/assets/9143737/fa5197a0-f117-422b-bc06-2e33fa147068" width="300px" height="92px" alt="Bazar Net logo"/>
+  </a>
 
-## Getting Started
+<h1 align="center">
+  < 🛒 > Bazar-Net | You shop online
+</h1>
 
-First, run the development server:
+<p align="center">
+    <a href="https://github.com/thotluna/bazar-net/actions/workflows/publish_vercel.yml"><img src="https://github.com/thotluna/bazar-net/actions/workflows/publish_vercel.yml/badge.svg" alt="Build status"/></a>
+</p>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+<p align="center">
+  This web shop offers a wide variety of products for women, men, and children. Customers can either purchase products directly or select them for later consultation and purchase. The shop offers a variety of payment options and shipping methods to make it easy for customers to get the products they need.  
+  <br />
+  <br />
+  <a href="https://github.com/thotluna/bazar-net">Stars are welcome 😊</a>
+</p>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📚 Application Summary
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+<p>In the second challenge of <a href='https://pruebastecnicas.com/'>"Pruebas técnicas de Programación"</a>, We are a bazaar with all kinds of products. We want to create our web app. For now, our market will be mobile. In this first version, users will be able to search for the product name, we will show them a list of products, and they will be able to click on each one to see the details.</p>
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 🔨 Install and Run
 
-## Learn More
+- `git clone https://github.com/thotluna/bazar-net.git`: Clone repository
+- `pnpm install`: Install dependencies
+- `pnpm dev`: Run app in mode development
 
-To learn more about Next.js, take a look at the following resources:
+## ✅ Testing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `pnpm test`: Run unit test
+- `npm test.e2e`: Execute e2e test with cypress with ui
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 🔦 Linting & Format
 
-## Deploy on Vercel
+- `pnpm lint`: Run linter
+- `pnpm fmt`: Fix format issues
+- `pnpm fmt.check`: Check format issues
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🚀 CI and Publishing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project comes with a GitHub Actions workflow to automatically publish to any push to main.
+
+For publishing to work you will need to add a secret VERCEL_ORG_ID and VERCEL_PROJECT_ID to your repository
+
+Read the [full documentation on the vercel publish github action](https://vercel.com/guides/how-can-i-use-github-actions-with-vercel).
+
+## 🌈 Tech Stack
+
+- [TypeScript](https://www.typescriptlang.org)
+- [vite](https://nextjs.org/)
+- [ESLint](https://eslint.org) and [Prettier](https://prettier.io)
+- [React](https://react.dev/)
+- [tailwindcss](https://tailwindcss.com/)
+- [Cypress](https://www.cypress.io/) for e2e test
+- [jest](https://jestjs.io/) with [Testing Library](https://testing-library.com/docs/) for component tests
+- [GitHub Action Workflows](https://github.com/features/actions) set up to run tests and linting on push
+- [.editorconfig](https://editorconfig.org) for sharing the IDE config
