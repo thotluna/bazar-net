@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://bazar-net.vercel.app/">
-       <img src="https://github.com/thotluna/Reading-Bookshop/assets/9143737/fa5197a0-f117-422b-bc06-2e33fa147068" width="300px" height="92px" alt="Bazar Net logo"/>
+       <img src="https://github.com/thotluna/bazar-net/assets/9143737/90c867b1-7583-4ccb-b337-1c55bd2d6053" width="200px" height="200px" alt="Bazar Net logo"/>
   </a>
 
 <h1 align="center">
